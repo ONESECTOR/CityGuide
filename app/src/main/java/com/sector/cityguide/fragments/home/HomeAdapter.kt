@@ -46,6 +46,5 @@ class HomeAdapter: ListAdapter<Place, HomeAdapter.ViewHolder>(ItemComparator()) 
         override fun areContentsTheSame(oldItem: Place, newItem: Place): Boolean {
             return oldItem == newItem
         }
-
     }
 }

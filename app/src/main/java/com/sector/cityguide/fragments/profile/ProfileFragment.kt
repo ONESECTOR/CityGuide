@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
