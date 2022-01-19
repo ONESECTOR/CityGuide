@@ -1,4 +1,4 @@
-package com.sector.cityguide.fragments
+package com.sector.cityguide.fragments.favorite
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
