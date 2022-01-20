@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    // Common
+    <string name="email">Электронная почта</string>
+    <string name="password">Пароль</string>
+    <string name="skip">Пропустить</string>
 
     // Login page
-    <string name="login">Войти</string>
+    <string name="sign_in">Войти</string>
+    <string name="sign_in_to_access">Войдите, чтобы получить доступ ко всем функциям приложения</string>
+    <string name="remember_me">Запомнить меня</string>
+    <string name="welcome_back">С возвращением!</string>
+    <string name="dont_have_an_account">Ещё нет аккаунта? Зарегистрируйтесь!</string>
 </resources>

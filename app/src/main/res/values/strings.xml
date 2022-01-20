@@ -1,7 +1,14 @@
 <resources>
-    // Basic
+    // Common
     <string name="app_name" translatable="false">City Guide</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="skip">Skip</string>
 
     // Login page
-    <string name="login">Log in</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_in_to_access">Sign in to access all app features</string>
+    <string name="remember_me">Remember me</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="dont_have_an_account">Don\'t have an account? Register!</string>
 </resources>
