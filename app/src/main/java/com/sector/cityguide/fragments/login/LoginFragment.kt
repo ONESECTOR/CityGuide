@@ -1,6 +1,7 @@
 package com.sector.cityguide.fragments.login
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,8 @@ class LoginFragment : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
+        binding.btnSignIn.setOnClickListener { submitForm() }
+
         return binding.root
     }
 
@@ -27,41 +30,47 @@ class LoginFragment : Fragment() {
         passwordFocusListener()
     }
 
-    private fun passwordFocusListener() {
-        binding.etPassword.setOnFocusChangeListener { _, focused ->
-            if (!focused) {
-                binding.passwordContainer.helperText = validatePassword()
-            }
-        }
-    }
-
-    private fun validatePassword(): CharSequence? {
-        val password = binding.etPassword.text.toString()
-
-        // this function will update in the future
-
-        return null
-    }
-
     private fun emailFocusListener() {
         binding.etEmail.setOnFocusChangeListener { _, focused ->
-            if (!focused) {
+            if (!focused)
                 binding.emailContainer.helperText = validateEmail()
-            }
         }
     }
 
-    private fun validateEmail(): CharSequence? {
+    private fun passwordFocusListener() {
+        binding.etPassword.setOnFocusChangeListener { _, focused ->
+            if (!focused)
+                binding.passwordContainer.helperText = validatePassword()
+        }
+    }
+
+    private fun validateEmail(): String? {
         val email = binding.etEmail.text.toString()
 
-        if (email.isEmpty()) {
+        if (email.isEmpty())
             return "Field can't be empty"
-        }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            return "Invalid Email Address"
-        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+            return "Invalid email"
 
         return null
+    }
+
+    private fun validatePassword(): String? {
+        val password = binding.etPassword.text.toString()
+
+        if (password.isEmpty())
+            return "Field can't be empty"
+
+        return null
+    }
+
+    private fun submitForm() {
+        val validEmail = binding.emailContainer.helperText == null
+        val validPassword = binding.passwordContainer.helperText == null
+
+        if (validEmail && validPassword) {
+            Log.d("MyTag", "Completed!")
+        }
     }
 }
