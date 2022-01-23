@@ -23,9 +23,20 @@ class SignupFragment : Fragment() {
         passwordFocusListener()
         repeatPasswordFocusListener()
 
-        binding.btnSignUp.setOnClickListener { submitForm() }
-
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            btnSignUp.setOnClickListener { submitForm() }
+            btnBack.setOnClickListener { goBack() }
+        }
+    }
+
+    private fun goBack() {
+        activity?.onBackPressed()
     }
 
     private fun repeatPasswordFocusListener() {

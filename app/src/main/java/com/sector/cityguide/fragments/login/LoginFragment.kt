@@ -26,8 +26,17 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         emailFocusListener()
         passwordFocusListener()
+
+        binding.apply {
+            btnBack.setOnClickListener { goBack() }
+        }
+    }
+
+    private fun goBack() {
+        activity?.onBackPressed()
     }
 
     private fun emailFocusListener() {
