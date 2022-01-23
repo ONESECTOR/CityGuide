@@ -1,4 +1,4 @@
-package com.sector.cityguide.fragments.login
+package com.sector.cityguide.fragments.signin
 
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sector.cityguide.databinding.FragmentLoginBinding
 
-class LoginFragment : Fragment() {
+class SignInFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
@@ -78,8 +78,7 @@ class LoginFragment : Fragment() {
         val validEmail = binding.emailContainer.helperText == null
         val validPassword = binding.passwordContainer.helperText == null
 
-        if (validEmail && validPassword) {
+        if (validEmail && validPassword)
             Log.d("MyTag", "Completed!")
-        }
     }
 }

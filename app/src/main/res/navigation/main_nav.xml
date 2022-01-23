@@ -21,7 +21,7 @@
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.sector.cityguide.fragments.login.LoginFragment"
+        android:name="com.sector.cityguide.fragments.signin.SignInFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
