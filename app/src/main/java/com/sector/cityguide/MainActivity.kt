@@ -2,6 +2,7 @@ package com.sector.cityguide
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -20,6 +21,16 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         val navController = navHostFragment.navController
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when(destination.id) {
+                R.id.homeFragment -> bottomNavigationView.visibility = View.VISIBLE
+                R.id.favoriteFragment -> bottomNavigationView.visibility = View.VISIBLE
+                R.id.profileFragment -> bottomNavigationView.visibility = View.VISIBLE
+                R.id.userFragment -> bottomNavigationView.visibility = View.VISIBLE
+                else -> bottomNavigationView.visibility = View.GONE
+            }
+        }
 
         bottomNavigationView.setupWithNavController(navController)
     }
