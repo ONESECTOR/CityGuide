@@ -18,7 +18,6 @@ class PhoneFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
-    //private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
     override fun onCreateView(
@@ -37,8 +36,8 @@ class PhoneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnSend.setOnClickListener {
-            send()
+        binding.btnNext.setOnClickListener {
+            sendCode()
         }
     }
 
@@ -53,14 +52,17 @@ class PhoneFragment : Fragment() {
             findNavController().navigate(R.id.action_phoneFragment_to_userFragment)
     }
 
-    private fun send() {
-        val phoneNumber = binding.etPhoneNumber.text.toString().trim()
+    private fun sendCode() {
+        val prefix = binding.phoneNumberContainer.prefixText.toString()
+        val editText = binding.etPhoneNumber.text.toString().trim()
+        val phoneNumber = prefix + editText
+        Log.d("MyTag", phoneNumber)
 
         val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(phoneNumber)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(requireActivity())                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+            .setPhoneNumber(phoneNumber)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(requireActivity())
+            .setCallbacks(callbacks)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
@@ -89,26 +91,6 @@ class PhoneFragment : Fragment() {
             }
         }
     }
-
-    /*private fun otpSend() {
-        callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-
-            }
-
-            override fun onVerificationFailed(e: FirebaseException) {
-
-            }
-
-            override fun onCodeSent(
-                verificationId: String,
-                token: PhoneAuthProvider.ForceResendingToken
-            ) {
-                openConfirmFragment(verificationId)
-            }
-        }
-    }*/
 
     private fun openConfirmFragment(verificationId: String) {
         val action = PhoneFragmentDirections.actionPhoneFragmentToConfirmPhoneFragment(verificationId = verificationId)

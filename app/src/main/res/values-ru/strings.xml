@@ -4,6 +4,7 @@
     <string name="email">Электронная почта</string>
     <string name="password">Пароль</string>
     <string name="skip">Пропустить</string>
+    <string name="next">Далее</string>
 
     // Login page
     <string name="sign_in">Войти</string>
@@ -11,4 +12,9 @@
     <string name="remember_me">Запомнить меня</string>
     <string name="welcome_back">С возвращением!</string>
     <string name="dont_have_an_account">Ещё нет аккаунта? Зарегистрируйтесь!</string>
+
+    // OTP verification
+    <string name="phone_number">Номер телефона</string>
+    <string name="we_send_you">Мы отправим вам на него код подтверждения</string>
+    <string name="enter_phone_number">Введите номер телефона</string>
 </resources>

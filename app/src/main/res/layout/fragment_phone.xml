@@ -4,32 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FCFCFC"
     android:padding="16dp"
     tools:context=".fragments.signin.PhoneFragment">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBack"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
     <TextView
-        android:id="@+id/tvOtpVerification"
+        android:id="@+id/tvEnterPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:fontFamily="@font/golos_semi_bold"
-        android:textSize="30sp"
+        android:text="@string/enter_phone_number"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:layout_marginTop="80dp"
-        android:text="OTP Verification"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnBack" />
+
+    <TextView
+        android:id="@+id/tvWeSent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/golos_regular"
+        android:text="@string/we_send_you"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEnterPhoneNumber" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phoneNumberContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:hint="Phone number"
+        android:layout_marginTop="24dp"
+        android:hint="@string/phone_number"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvOtpVerification"
+        app:layout_constraintTop_toBottomOf="@+id/tvWeSent"
+        app:prefixText="+7"
+        app:prefixTextColor="@color/black"
         app:startIconDrawable="@drawable/ic_phone">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -42,19 +69,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSend"
+        android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="26dp"
         android:backgroundTint="@color/black"
+        android:textAllCaps="false"
         android:fontFamily="@font/golos_regular"
-        android:padding="12dp"
-        android:text="SEND"
+        android:padding="16dp"
+        android:text="@string/next"
         android:textColor="@color/white"
-        android:textSize="14sp"
-        app:cornerRadius="12dp"
+        android:textSize="15sp"
+        app:cornerRadius="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phoneNumberContainer" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
