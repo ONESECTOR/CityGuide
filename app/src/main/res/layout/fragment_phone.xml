@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FCFCFC"
+    android:background="@color/background_light"
     android:padding="16dp"
     tools:context=".fragments.signin.PhoneFragment">
 
@@ -74,10 +74,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:backgroundTint="@color/black"
-        android:textAllCaps="false"
         android:fontFamily="@font/golos_regular"
         android:padding="16dp"
         android:text="@string/next"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15sp"
         app:cornerRadius="14dp"
