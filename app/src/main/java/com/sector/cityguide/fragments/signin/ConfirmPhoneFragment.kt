@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.sector.cityguide.R
@@ -37,8 +36,7 @@ class ConfirmPhoneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Log.d("MyTag", getPhoneNumber())
-        binding.btnVerify.setOnClickListener {
+        binding.btnConfirm.setOnClickListener {
             verify()
         }
     }
@@ -49,6 +47,7 @@ class ConfirmPhoneFragment : Fragment() {
 
     private fun verify() {
         val code = binding.etCode.text.toString().trim()
+        Log.d("code", code)
 
         val credential = PhoneAuthProvider.getCredential(getVerificationId(), code)
         signInWithPhoneAuthCredential(credential)
@@ -62,17 +61,10 @@ class ConfirmPhoneFragment : Fragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d("MyTag", "signInWithCredential:success")
                     findNavController().navigate(R.id.action_confirmPhoneFragment_to_userFragment)
-                    //val user = task.result?.user
                 } else {
-                    // Sign in failed, display a message and update the UI
                     Log.w("MyTag", "signInWithCredential:failure", task.exception)
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
-                    }
-                    // Update UI
                 }
             }
     }
