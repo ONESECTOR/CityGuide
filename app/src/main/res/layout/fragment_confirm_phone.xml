@@ -5,25 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light"
+    android:foregroundGravity="center"
     android:padding="16dp"
     tools:context=".fragments.signin.ConfirmPhoneFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivLock"
+        android:layout_width="220dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="116dp"
+        android:background="@drawable/ic_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvEnterCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="2dp"
         android:fontFamily="@font/golos_semi_bold"
-        android:text="Введите код подтверждения"
+        android:text="@string/enter_code"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ivLock" />
 
     <com.chaos.view.PinView
-        android:id="@id/etCode"
+        android:id="@+id/etCode"
         style="@style/PinWidget.PinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,23 +55,36 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEnterCode"
         app:lineColor="@color/black"
         app:lineWidth="2dp"
-        app:viewType="rectangle" />
+        app:viewType="rectangle"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tvResendCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/golos_regular"
+        android:text="@string/resend_code"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCode" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:backgroundTint="@color/black"
         android:fontFamily="@font/golos_regular"
         android:padding="16dp"
-        android:text="Подтвердить"
+        android:text="@string/confirm"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15sp"
         app:cornerRadius="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCode" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
