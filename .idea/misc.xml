@@ -5,12 +5,14 @@
       <map>
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/gradient.xml" value="0.25462962962962965" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_back.xml" value="0.2564814814814815" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_code.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_email.xml" value="0.25" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_favorite.xml" value="0.2564814814814815" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_favorite_filled.xml" value="0.25092592592592594" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_favorite_outlined.xml" value="0.2564814814814815" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_home.xml" value="0.2564814814814815" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_lock.xml" value="0.25" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_lock_circle.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_person.xml" value="0.25462962962962965" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_phone.xml" value="0.1725752508361204" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/rounded_button.xml" value="0.25" />
@@ -20,7 +22,7 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_favorite.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_home.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_login.xml" value="0.2" />
-        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_phone.xml" value="0.16385135135135134" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_phone.xml" value="0.25" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_profile.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_signup.xml" value="0.16385135135135134" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_user.xml" value="0.16" />
