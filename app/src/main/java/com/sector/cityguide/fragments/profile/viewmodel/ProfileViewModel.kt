@@ -1,4 +1,4 @@
-package com.sector.cityguide.fragments.profile
+package com.sector.cityguide.fragments.profile.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

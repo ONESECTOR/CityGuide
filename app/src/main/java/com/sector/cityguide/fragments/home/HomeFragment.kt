@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import com.sector.cityguide.databinding.FragmentHomeBinding
+import com.sector.cityguide.fragments.home.adapter.HomeAdapter
 import com.sector.cityguide.models.Place
 
 class HomeFragment : Fragment() {

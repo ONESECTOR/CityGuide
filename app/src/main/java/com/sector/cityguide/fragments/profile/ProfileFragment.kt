@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sector.cityguide.databinding.FragmentProfileBinding
+import com.sector.cityguide.fragments.profile.adapter.ProfileAdapter
+import com.sector.cityguide.fragments.profile.viewmodel.ProfileViewModel
 import com.sector.cityguide.models.ProfileMenu
 
 class ProfileFragment : Fragment() {
