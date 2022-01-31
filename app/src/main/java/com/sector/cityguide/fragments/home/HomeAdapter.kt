@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sector.cityguide.databinding.ItemPlaceBinding
-import com.sector.cityguide.model.Place
+import com.sector.cityguide.models.Place
 
 class HomeAdapter: ListAdapter<Place, HomeAdapter.ViewHolder>(ItemComparator()) {
 

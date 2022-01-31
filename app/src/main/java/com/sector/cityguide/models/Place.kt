@@ -1,4 +1,4 @@
-package com.sector.cityguide.model
+package com.sector.cityguide.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

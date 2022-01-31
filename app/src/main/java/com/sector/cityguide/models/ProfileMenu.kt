@@ -1,4 +1,4 @@
-package com.sector.cityguide.model
+package com.sector.cityguide.models
 
 data class ProfileMenu(
     val title: String = "",

@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentProfileBinding
-import com.sector.cityguide.model.ProfileMenu
+import com.sector.cityguide.models.ProfileMenu
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -28,7 +32,17 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView()
+        val list = mutableListOf<ProfileMenu>()
+
+        //setupRecyclerView()
+        val viewModel = ViewModelProvider(requireActivity()).get(ProfileViewModel::class.java)
+        viewModel.getElements().observe(viewLifecycleOwner, Observer { element ->
+            list.addAll(element)
+        })
+
+        val adapter = ProfileAdapter(list)
+        binding.rvProfileMenu.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvProfileMenu.adapter = adapter
     }
 
     private fun setupRecyclerView() {
