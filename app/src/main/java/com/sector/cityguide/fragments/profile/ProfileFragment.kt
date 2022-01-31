@@ -27,11 +27,15 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
         val list = mutableListOf<ProfileMenu>()
 
         val viewModel = ViewModelProvider(requireActivity()).get(ProfileViewModel::class.java)
-        viewModel.getElements().observe(viewLifecycleOwner, Observer { element ->
-            list.addAll(element)
+        viewModel.getMenuElements().observe(viewLifecycleOwner, Observer { menu ->
+            list.addAll(menu)
         })
 
         val adapter = ProfileAdapter(list)
