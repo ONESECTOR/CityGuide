@@ -6,6 +6,9 @@
     <string name="skip">Пропустить</string>
     <string name="next">Далее</string>
     <string name="confirm">Подтвердить</string>
+    <string name="favorite">Избранное</string>
+    <string name="home">Главная</string>
+    <string name="profile">Профиль</string>
 
     // Login page
     <string name="sign_in">Войти</string>
