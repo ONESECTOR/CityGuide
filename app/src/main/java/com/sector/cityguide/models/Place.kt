@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class Place(
     val name: String = "",
     val description: String = "",
+    val location: String = "",
     val image: String = ""
 ): Parcelable

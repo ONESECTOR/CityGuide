@@ -39,7 +39,13 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         adapter = HomeAdapter()
-        binding.rvPlaces.layoutManager = LinearLayoutManager(requireContext())
+
+        binding.rvPlaces.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
         binding.rvPlaces.adapter = adapter
     }
 

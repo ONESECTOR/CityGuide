@@ -13,9 +13,11 @@ class HomeAdapter: ListAdapter<Place, HomeAdapter.ViewHolder>(ItemComparator()) 
 
     class ViewHolder(private val binding: ItemPlaceBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(place: Place) = with(binding) {
-            tvPlace.text = place.name
+            tvTitle.text = place.name
+            tvLocation.text = place.location
             Glide.with(itemView.context)
                 .load(place.image)
+                .centerCrop()
                 .into(ivPlace)
         }
 
