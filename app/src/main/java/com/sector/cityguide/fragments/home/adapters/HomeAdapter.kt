@@ -1,4 +1,4 @@
-package com.sector.cityguide.fragments.home.adapter
+package com.sector.cityguide.fragments.home.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

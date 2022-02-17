@@ -10,6 +10,9 @@
     <string name="home">Home</string>
     <string name="profile">Profile</string>
 
+    // Home page
+    <string name="recommended">Recommended</string>
+
     // Login page
     <string name="sign_in">Sign in</string>
     <string name="sign_in_to_access">Sign in to access all app features</string>

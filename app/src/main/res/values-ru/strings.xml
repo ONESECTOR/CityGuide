@@ -10,6 +10,9 @@
     <string name="home">Главная</string>
     <string name="profile">Профиль</string>
 
+    // Home page
+    <string name="recommended">Рекомендуем</string>
+
     // Login page
     <string name="sign_in">Войти</string>
     <string name="sign_in_to_access">Войдите, чтобы получить доступ ко всем функциям приложения</string>
