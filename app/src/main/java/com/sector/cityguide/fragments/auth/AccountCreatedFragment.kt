@@ -1,4 +1,4 @@
-package com.sector.cityguide.fragments.signup
+package com.sector.cityguide.fragments.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,7 +19,7 @@ class AccountCreatedFragment : Fragment() {
     ): View {
         _binding = FragmentAccountCreatedBinding.inflate(inflater, container, false)
 
-        binding.btnSubmit.setOnClickListener { openHomeFragment() }
+        binding.btnAccept.setOnClickListener { openHomeFragment() }
 
         return binding.root
     }

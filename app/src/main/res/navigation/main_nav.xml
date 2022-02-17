@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/accountCreatedFragment"
-        android:name="com.sector.cityguide.fragments.signup.AccountCreatedFragment"
+        android:name="com.sector.cityguide.fragments.auth.AccountCreatedFragment"
         android:label="fragment_account_created"
         tools:layout="@layout/fragment_account_created">
         <action
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/phoneFragment"
-        android:name="com.sector.cityguide.fragments.signin.PhoneFragment"
+        android:name="com.sector.cityguide.fragments.auth.PhoneFragment"
         android:label="fragment_phone"
         tools:layout="@layout/fragment_phone" >
         <action
@@ -81,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/confirmPhoneFragment"
-        android:name="com.sector.cityguide.fragments.signin.ConfirmPhoneFragment"
+        android:name="com.sector.cityguide.fragments.auth.ConfirmPhoneFragment"
         android:label="fragment_confirm_phone"
         tools:layout="@layout/fragment_confirm_phone" >
         <argument

@@ -1,4 +1,4 @@
-package com.sector.cityguide.fragments.signin
+package com.sector.cityguide.fragments.auth
 
 import android.graphics.Color
 import android.graphics.Typeface
