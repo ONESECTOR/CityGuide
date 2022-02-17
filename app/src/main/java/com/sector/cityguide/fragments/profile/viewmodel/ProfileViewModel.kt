@@ -28,11 +28,6 @@ class ProfileViewModel: ViewModel() {
                 title = "Профиль",
                 description = "Измените информацию о себе",
                 icon = R.drawable.ic_outline_profile_light
-            ),
-            ProfileMenu(
-                title = "Настройки",
-                description = "Общее в приложении",
-                icon = R.drawable.ic_outline_settings_light
             )
         )
     }

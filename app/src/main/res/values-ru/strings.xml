@@ -9,6 +9,7 @@
     <string name="favorite">Избранное</string>
     <string name="home">Главная</string>
     <string name="profile">Профиль</string>
+    <string name="settings">Настройки</string>
 
     // Home page
     <string name="recommended">Рекомендуем</string>

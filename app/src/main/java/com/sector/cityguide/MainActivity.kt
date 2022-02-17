@@ -3,7 +3,6 @@ package com.sector.cityguide
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -28,6 +27,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.favoriteFragment -> bottomNavigationView.visibility = View.VISIBLE
                 R.id.profileFragment -> bottomNavigationView.visibility = View.VISIBLE
                 R.id.userFragment -> bottomNavigationView.visibility = View.VISIBLE
+                R.id.settingsFragment -> bottomNavigationView.visibility = View.VISIBLE
                 else -> bottomNavigationView.visibility = View.GONE
             }
         }
