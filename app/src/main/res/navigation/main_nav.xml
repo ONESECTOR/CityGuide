@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/authFirstStepFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/profileFragment"
@@ -19,16 +19,6 @@
         android:id="@+id/homeFragment"
         android:name="com.sector.cityguide.fragments.home.HomeFragment"
         android:label="HomeFragment" />
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.sector.cityguide.fragments.signin.SignInFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
-    <fragment
-        android:id="@+id/signupFragment"
-        android:name="com.sector.cityguide.fragments.signup.SignupFragment"
-        android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" />
     <fragment
         android:id="@+id/authCompletedFragment"
         android:name="com.sector.cityguide.fragments.auth.AuthCompletedFragment"
@@ -81,4 +71,13 @@
         android:name="com.sector.cityguide.fragments.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.sector.cityguide.fragments.splash.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
