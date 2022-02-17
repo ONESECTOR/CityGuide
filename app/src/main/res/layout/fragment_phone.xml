@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_light"
     android:padding="16dp"
-    tools:context=".fragments.auth.PhoneFragment">
+    tools:context=".fragments.auth.AuthFirstStepFragment">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBack"

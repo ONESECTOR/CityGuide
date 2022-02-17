@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/phoneFragment">
+    app:startDestination="@id/authFirstStepFragment">
 
     <fragment
         android:id="@+id/profileFragment"
@@ -23,33 +23,16 @@
         android:id="@+id/loginFragment"
         android:name="com.sector.cityguide.fragments.signin.SignInFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_signupFragment"
-            app:destination="@id/signupFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.sector.cityguide.fragments.signup.SignupFragment"
         android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" >
-        <action
-            android:id="@+id/action_signupFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
-        <action
-            android:id="@+id/action_signupFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_signupFragment_to_loginFragment2"
-            app:destination="@id/loginFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_signup" />
     <fragment
-        android:id="@+id/accountCreatedFragment"
-        android:name="com.sector.cityguide.fragments.auth.AccountCreatedFragment"
-        android:label="fragment_account_created"
+        android:id="@+id/authCompletedFragment"
+        android:name="com.sector.cityguide.fragments.auth.AuthCompletedFragment"
+        android:label="fragment_auth_completed"
         tools:layout="@layout/fragment_account_created">
         <action
             android:id="@+id/action_accountCreatedFragment_to_homeFragment"
@@ -59,31 +42,24 @@
         android:id="@+id/welcomeFragment"
         android:name="com.sector.cityguide.fragments.welcome.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome">
-        <action
-            android:id="@+id/action_welcomeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_signupFragment"
-            app:destination="@id/signupFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_welcome"/>
     <fragment
-        android:id="@+id/phoneFragment"
-        android:name="com.sector.cityguide.fragments.auth.PhoneFragment"
-        android:label="fragment_phone"
-        tools:layout="@layout/fragment_phone" >
+        android:id="@+id/authFirstStepFragment"
+        android:name="com.sector.cityguide.fragments.auth.AuthFirstStepFragment"
+        android:label="fragment_auth_first_step"
+        tools:layout="@layout/fragment_phone">
         <action
             android:id="@+id/action_phoneFragment_to_confirmPhoneFragment"
-            app:destination="@id/confirmPhoneFragment" />
+            app:destination="@id/authSecondStepFragment" />
         <action
             android:id="@+id/action_phoneFragment_to_userFragment"
             app:destination="@id/userFragment" />
     </fragment>
     <fragment
-        android:id="@+id/confirmPhoneFragment"
-        android:name="com.sector.cityguide.fragments.auth.ConfirmPhoneFragment"
-        android:label="fragment_confirm_phone"
-        tools:layout="@layout/fragment_confirm_phone" >
+        android:id="@+id/authSecondStepFragment"
+        android:name="com.sector.cityguide.fragments.auth.AuthSecondStepFragment"
+        android:label="fragment_auth_second_step"
+        tools:layout="@layout/fragment_confirm_phone">
         <argument
             android:name="verificationId"
             app:argType="string" />
@@ -98,7 +74,7 @@
         tools:layout="@layout/fragment_user" >
         <action
             android:id="@+id/action_userFragment_to_phoneFragment"
-            app:destination="@id/phoneFragment" />
+            app:destination="@id/authFirstStepFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

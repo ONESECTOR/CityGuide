@@ -13,7 +13,7 @@ import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentPhoneBinding
 import java.util.concurrent.TimeUnit
 
-class PhoneFragment : Fragment() {
+class AuthFirstStepFragment : Fragment() {
     private var _binding: FragmentPhoneBinding? = null
     private val binding get() = _binding!!
 
@@ -93,7 +93,7 @@ class PhoneFragment : Fragment() {
     }
 
     private fun openConfirmFragment(verificationId: String) {
-        val action = PhoneFragmentDirections.actionPhoneFragmentToConfirmPhoneFragment(verificationId = verificationId)
+        val action = AuthFirstStepFragmentDirections.actionPhoneFragmentToConfirmPhoneFragment(verificationId = verificationId)
         findNavController().navigate(action)
     }
 }

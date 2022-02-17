@@ -24,11 +24,11 @@ import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentConfirmPhoneBinding
 import java.util.*
 
-class ConfirmPhoneFragment : Fragment() {
+class AuthSecondStepFragment : Fragment() {
     private var _binding: FragmentConfirmPhoneBinding? = null
     private val binding get() = _binding!!
 
-    private val args by navArgs<ConfirmPhoneFragmentArgs>()
+    private val args by navArgs<AuthSecondStepFragmentArgs>()
 
     private lateinit var auth: FirebaseAuth
 

@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentAccountCreatedBinding
 
-class AccountCreatedFragment : Fragment() {
+class AuthCompletedFragment : Fragment() {
     private var _binding: FragmentAccountCreatedBinding? = null
     private val binding get() = _binding!!
 

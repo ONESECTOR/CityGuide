@@ -25,17 +25,5 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.apply {
-            btnSignIn.setOnClickListener { openSignInFragment() }
-            btnSignUp.setOnClickListener { openSignUpFragment() }
-        }
-    }
-
-    private fun openSignUpFragment() {
-        findNavController().navigate(R.id.action_welcomeFragment_to_signupFragment)
-    }
-
-    private fun openSignInFragment() {
-        findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
     }
 }
