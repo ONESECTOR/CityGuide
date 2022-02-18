@@ -10,10 +10,6 @@
         android:icon="@drawable/favorite_selector"
         android:title="@string/favorite" />
     <item
-        android:id="@+id/settingsFragment"
-        android:icon="@drawable/settings_selector"
-        android:title="@string/settings" />
-    <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/profile_selector"
         android:title="@string/profile" />

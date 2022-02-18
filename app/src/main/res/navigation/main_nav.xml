@@ -67,11 +67,6 @@
             app:destination="@id/authFirstStepFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.sector.cityguide.fragments.settings.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
-    <fragment
         android:id="@+id/splashScreenFragment"
         android:name="com.sector.cityguide.fragments.splash.SplashScreenFragment"
         android:label="fragment_splash_screen"
