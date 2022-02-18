@@ -135,7 +135,7 @@ class AuthSecondStepFragment : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     Log.d("MyTag", "signInWithCredential:success")
-                    findNavController().navigate(R.id.action_confirmPhoneFragment_to_userFragment)
+                    findNavController().navigate(R.id.action_authSecondStepFragment_to_authCompletedFragment)
                 } else {
                     Log.w("MyTag", "signInWithCredential:failure", task.exception)
                 }

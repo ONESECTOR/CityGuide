@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> bottomNavigationView.visibility = View.VISIBLE
                 R.id.favoriteFragment -> bottomNavigationView.visibility = View.VISIBLE
                 R.id.profileFragment -> bottomNavigationView.visibility = View.VISIBLE
-                R.id.userFragment -> bottomNavigationView.visibility = View.VISIBLE
                 else -> bottomNavigationView.visibility = View.GONE
             }
         }

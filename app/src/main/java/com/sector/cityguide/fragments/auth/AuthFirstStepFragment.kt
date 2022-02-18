@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
-import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentPhoneBinding
 import java.util.concurrent.TimeUnit
 
@@ -27,7 +26,6 @@ class AuthFirstStepFragment : Fragment() {
         _binding = FragmentPhoneBinding.inflate(inflater, container, false)
 
         initFirebase()
-        checkUser()
         setCallbacks()
 
         return binding.root
@@ -39,17 +37,14 @@ class AuthFirstStepFragment : Fragment() {
         binding.btnNext.setOnClickListener {
             sendCode()
         }
+
+        binding.btnBack.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     private fun initFirebase() {
         auth = FirebaseAuth.getInstance()
-    }
-
-    private fun checkUser() {
-        val currentUser = auth.currentUser
-
-        if (currentUser != null)
-            findNavController().navigate(R.id.action_phoneFragment_to_userFragment)
     }
 
     private fun sendCode() {
@@ -73,7 +68,6 @@ class AuthFirstStepFragment : Fragment() {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 // If user is already verified.
                 Log.d("MyTag", "already verified")
-                findNavController().navigate(R.id.action_phoneFragment_to_userFragment)
             }
 
             override fun onVerificationFailed(e: FirebaseException) {

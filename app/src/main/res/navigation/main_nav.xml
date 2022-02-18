@@ -9,7 +9,11 @@
         android:id="@+id/profileFragment"
         android:name="com.sector.cityguide.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_authFirstStepFragment"
+            app:destination="@id/authFirstStepFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.sector.cityguide.fragments.favorite.FavoriteFragment"
@@ -25,14 +29,9 @@
         android:label="fragment_auth_completed"
         tools:layout="@layout/fragment_account_created">
         <action
-            android:id="@+id/action_accountCreatedFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_authCompletedFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/welcomeFragment"
-        android:name="com.sector.cityguide.fragments.welcome.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome"/>
     <fragment
         android:id="@+id/authFirstStepFragment"
         android:name="com.sector.cityguide.fragments.auth.AuthFirstStepFragment"
@@ -41,9 +40,6 @@
         <action
             android:id="@+id/action_phoneFragment_to_confirmPhoneFragment"
             app:destination="@id/authSecondStepFragment" />
-        <action
-            android:id="@+id/action_phoneFragment_to_userFragment"
-            app:destination="@id/userFragment" />
     </fragment>
     <fragment
         android:id="@+id/authSecondStepFragment"
@@ -54,23 +50,14 @@
             android:name="verificationId"
             app:argType="string" />
         <action
-            android:id="@+id/action_confirmPhoneFragment_to_userFragment"
-            app:destination="@id/userFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/userFragment"
-        android:name="com.sector.cityguide.fragments.signin.UserFragment"
-        android:label="fragment_user"
-        tools:layout="@layout/fragment_user" >
-        <action
-            android:id="@+id/action_userFragment_to_phoneFragment"
-            app:destination="@id/authFirstStepFragment" />
+            android:id="@+id/action_authSecondStepFragment_to_authCompletedFragment"
+            app:destination="@id/authCompletedFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
         android:name="com.sector.cityguide.fragments.splash.SplashScreenFragment"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
+        tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/action_splashScreenFragment_to_homeFragment"
             app:destination="@id/homeFragment" />

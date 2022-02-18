@@ -19,12 +19,10 @@ class AuthCompletedFragment : Fragment() {
     ): View {
         _binding = FragmentAccountCreatedBinding.inflate(inflater, container, false)
 
-        binding.btnAccept.setOnClickListener { openHomeFragment() }
+        binding.btnAccept.setOnClickListener {
+            findNavController().navigate(R.id.action_authCompletedFragment_to_profileFragment)
+        }
 
         return binding.root
-    }
-
-    private fun openHomeFragment() {
-        findNavController().navigate(R.id.action_accountCreatedFragment_to_homeFragment)
     }
 }
