@@ -7,17 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.sector.cityguide.R
-import com.sector.cityguide.databinding.FragmentAccountCreatedBinding
+import com.sector.cityguide.databinding.FragmentAuthCompletedBinding
 
 class AuthCompletedFragment : Fragment() {
-    private var _binding: FragmentAccountCreatedBinding? = null
+    private var _binding: FragmentAuthCompletedBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAccountCreatedBinding.inflate(inflater, container, false)
+        _binding = FragmentAuthCompletedBinding.inflate(inflater, container, false)
 
         binding.btnAccept.setOnClickListener {
             findNavController().navigate(R.id.action_authCompletedFragment_to_profileFragment)

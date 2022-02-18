@@ -27,7 +27,7 @@
         android:id="@+id/authCompletedFragment"
         android:name="com.sector.cityguide.fragments.auth.AuthCompletedFragment"
         android:label="fragment_auth_completed"
-        tools:layout="@layout/fragment_account_created">
+        tools:layout="@layout/fragment_auth_completed">
         <action
             android:id="@+id/action_authCompletedFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -36,7 +36,7 @@
         android:id="@+id/authFirstStepFragment"
         android:name="com.sector.cityguide.fragments.auth.AuthFirstStepFragment"
         android:label="fragment_auth_first_step"
-        tools:layout="@layout/fragment_phone">
+        tools:layout="@layout/fragment_auth_first_step">
         <action
             android:id="@+id/action_phoneFragment_to_confirmPhoneFragment"
             app:destination="@id/authSecondStepFragment" />
@@ -45,7 +45,7 @@
         android:id="@+id/authSecondStepFragment"
         android:name="com.sector.cityguide.fragments.auth.AuthSecondStepFragment"
         android:label="fragment_auth_second_step"
-        tools:layout="@layout/fragment_confirm_phone">
+        tools:layout="@layout/fragment_auth_second_step">
         <argument
             android:name="verificationId"
             app:argType="string" />

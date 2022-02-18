@@ -9,11 +9,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
-import com.sector.cityguide.databinding.FragmentPhoneBinding
+import com.sector.cityguide.databinding.FragmentAuthFirstStepBinding
 import java.util.concurrent.TimeUnit
 
 class AuthFirstStepFragment : Fragment() {
-    private var _binding: FragmentPhoneBinding? = null
+    private var _binding: FragmentAuthFirstStepBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
@@ -23,7 +23,7 @@ class AuthFirstStepFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPhoneBinding.inflate(inflater, container, false)
+        _binding = FragmentAuthFirstStepBinding.inflate(inflater, container, false)
 
         initFirebase()
         setCallbacks()

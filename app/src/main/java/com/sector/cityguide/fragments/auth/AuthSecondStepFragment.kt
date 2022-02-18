@@ -21,11 +21,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.sector.cityguide.R
-import com.sector.cityguide.databinding.FragmentConfirmPhoneBinding
+import com.sector.cityguide.databinding.FragmentAuthSecondStepBinding
 import java.util.*
 
 class AuthSecondStepFragment : Fragment() {
-    private var _binding: FragmentConfirmPhoneBinding? = null
+    private var _binding: FragmentAuthSecondStepBinding? = null
     private val binding get() = _binding!!
 
     private val args by navArgs<AuthSecondStepFragmentArgs>()
@@ -36,7 +36,7 @@ class AuthSecondStepFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentConfirmPhoneBinding.inflate(inflater, container, false)
+        _binding = FragmentAuthSecondStepBinding.inflate(inflater, container, false)
 
         initFirebase()
 
