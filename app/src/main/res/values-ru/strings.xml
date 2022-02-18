@@ -14,7 +14,8 @@
     <string name="recommended">Рекомендуем</string>
 
     // Profile page
-
+    <string name="warning_account_title">Вы не вошли в аккаунт</string>
+    <string name="warning_account_subtitle">Войдите, чтобы получить дополнительные возможности!</string>
 
     // Login page
     <string name="sign_in">Войти</string>
