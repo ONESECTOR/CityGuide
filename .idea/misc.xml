@@ -39,8 +39,9 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/rounded_bottom_nav.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/rounded_button.xml" value="0.25" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/settings_selector.xml" value="0.149" />
-        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/activity_main.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_account_created.xml" value="0.176" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_auth_first_step.xml" value="0.16385135135135134" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_confirm_phone.xml" value="0.176" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_favorite.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_home.xml" value="0.176" />
@@ -54,7 +55,7 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_welcome.xml" value="0.16385135135135134" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/item_place.xml" value="0.264" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/item_profile_menu.xml" value="0.2" />
-        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/item_recommendation.xml" value="0.536" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/item_recommendation.xml" value="0.264" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/menu/bottom_menu.xml" value="0.2526041666666667" />
       </map>
     </option>
