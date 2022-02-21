@@ -48,18 +48,22 @@ class AuthFirstStepFragment : Fragment() {
     }
 
     private fun sendCode() {
-        val prefix = binding.phoneNumberContainer.prefixText.toString()
-        val editText = binding.etPhoneNumber.text.toString().trim()
-        val phoneNumber = prefix + editText
-        Log.d("MyTag", phoneNumber)
+        Log.d("MyTag", getPhoneNumber())
 
         val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(phoneNumber)
+            .setPhoneNumber(getPhoneNumber())
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(requireActivity())
             .setCallbacks(callbacks)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+
+    private fun getPhoneNumber(): String {
+        val prefix = binding.phoneNumberContainer.prefixText.toString()
+        val editText = binding.etPhoneNumber.text.toString().trim()
+        val phoneNumber = "$prefix$editText"
+        return phoneNumber
     }
 
     private fun setCallbacks() {
@@ -87,7 +91,11 @@ class AuthFirstStepFragment : Fragment() {
     }
 
     private fun openConfirmFragment(verificationId: String) {
-        val action = AuthFirstStepFragmentDirections.actionPhoneFragmentToConfirmPhoneFragment(verificationId = verificationId)
+        val action = AuthFirstStepFragmentDirections.
+        actionPhoneFragmentToConfirmPhoneFragment(
+            verificationId = verificationId,
+            phoneNumber = getPhoneNumber()
+        )
         findNavController().navigate(action)
     }
 }

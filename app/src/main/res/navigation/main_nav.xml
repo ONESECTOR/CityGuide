@@ -22,7 +22,11 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.sector.cityguide.fragments.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/authCompletedFragment"
         android:name="com.sector.cityguide.fragments.auth.AuthCompletedFragment"
@@ -52,6 +56,9 @@
         <action
             android:id="@+id/action_authSecondStepFragment_to_authCompletedFragment"
             app:destination="@id/authCompletedFragment" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
@@ -61,5 +68,14 @@
         <action
             android:id="@+id/action_splashScreenFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.sector.cityguide.fragments.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="currentPlace"
+            app:argType="com.sector.cityguide.models.Place" />
     </fragment>
 </navigation>

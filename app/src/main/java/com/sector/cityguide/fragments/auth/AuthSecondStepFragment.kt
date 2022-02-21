@@ -20,6 +20,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.database.FirebaseDatabase
 import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentAuthSecondStepBinding
 import java.util.*
@@ -55,6 +56,10 @@ class AuthSecondStepFragment : Fragment() {
 
     private fun getVerificationId(): String {
         return args.verificationId
+    }
+
+    private fun getPhoneNumber(): String {
+        return args.phoneNumber
     }
 
     private fun verify() {
@@ -135,10 +140,31 @@ class AuthSecondStepFragment : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     Log.d("MyTag", "signInWithCredential:success")
-                    findNavController().navigate(R.id.action_authSecondStepFragment_to_authCompletedFragment)
+                    saveUser()
                 } else {
                     Log.w("MyTag", "signInWithCredential:failure", task.exception)
                 }
+            }
+    }
+
+    private fun saveUser() {
+        val uid = auth.uid
+
+        // user data preparation
+        val hashMap: HashMap<String, Any?> = HashMap()
+        hashMap["uid"] = uid
+        hashMap["phone"] = getPhoneNumber()
+
+        // setup user data to database
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
+        ref.child(uid!!)
+            .setValue(hashMap)
+            .addOnSuccessListener {
+                Toast.makeText(requireContext(), "Saved!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_authSecondStepFragment_to_authCompletedFragment)
+            }
+            .addOnFailureListener {
+                Toast.makeText(requireContext(), "Failure!", Toast.LENGTH_SHORT).show()
             }
     }
 }

@@ -28,6 +28,7 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_favorite_light.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_home.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_info_light.xml" value="0.149" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_location.xml" value="0.149" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_person.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_person_light.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_profile_light.xml" value="0.149" />
@@ -38,11 +39,13 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/profile_selector.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/rounded_bottom_nav.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/rounded_button.xml" value="0.25" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/rounded_layout.xml" value="0.149" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/settings_selector.xml" value="0.149" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_account_created.xml" value="0.176" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_auth_first_step.xml" value="0.16385135135135134" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_confirm_phone.xml" value="0.176" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_favorite.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_login.xml" value="0.2" />
