@@ -12,4 +12,5 @@
     // Non-basic
     <color name="background_light">#FCFCFC</color>
     <color name="gray">#858585</color>
+    <color name="red">#FF2E2E</color>
 </resources>

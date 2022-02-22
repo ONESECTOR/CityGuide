@@ -9,6 +9,8 @@
     <string name="favorite">Избранное</string>
     <string name="home">Главная</string>
     <string name="profile">Профиль</string>
+    <string name="test_place">Родина-мать зовёт</string>
+    <string name="test_place_location">Волгоград</string>
 
     // Home page
     <string name="recommended">Рекомендуем</string>
