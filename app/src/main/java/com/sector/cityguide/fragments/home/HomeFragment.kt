@@ -17,8 +17,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private var refPlaces: DatabaseReference? = null
-    private var refRecommendations: DatabaseReference? = null
+    private var refPlace: DatabaseReference? = null
+    private var refPopular: DatabaseReference? = null
     private lateinit var placeAdapter: PlaceAdapter
     private lateinit var popularAdapter: PopularAdapter
 
@@ -57,27 +57,27 @@ class HomeFragment : Fragment() {
     private fun setupRecommendations() {
         popularAdapter = PopularAdapter()
 
-        binding.rvRecommendations.layoutManager = LinearLayoutManager(
+        binding.rvPopular.layoutManager = LinearLayoutManager(
             requireContext(),
             LinearLayoutManager.HORIZONTAL,
             false
         )
 
-        binding.rvRecommendations.adapter = popularAdapter
+        binding.rvPopular.adapter = popularAdapter
     }
 
     private fun getRefForPlaces() {
         FirebaseApp.initializeApp(requireContext())
-        refPlaces = FirebaseDatabase.getInstance().getReference("Places")
+        refPlace = FirebaseDatabase.getInstance().getReference("Places")
     }
 
     private fun getRefForRecommendations() {
         FirebaseApp.initializeApp(requireContext())
-        refRecommendations = FirebaseDatabase.getInstance().getReference("Recommendations")
+        refPopular = FirebaseDatabase.getInstance().getReference("Recommendations")
     }
 
     private fun readFromDatabase() {
-        refPlaces?.addValueEventListener(object: ValueEventListener {
+        refPlace?.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val list = ArrayList<Place>()
@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
             }
         })
 
-        refRecommendations?.addValueEventListener(object: ValueEventListener {
+        refPopular?.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val list = ArrayList<Place>()

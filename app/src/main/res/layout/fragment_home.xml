@@ -63,7 +63,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_popular_places"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_recommendations"
+            android:id="@+id/rv_popular"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="12dp"
