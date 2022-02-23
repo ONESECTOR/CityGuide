@@ -16,6 +16,9 @@
     // Home page
     <string name="recommended">Recommended</string>
 
+    // Detail page
+    <string name="detail">Detail</string>
+
     // Profile page
     <string name="warning_account_title">You are not logged in</string>
     <string name="warning_account_subtitle">Sign in to get more features!</string>

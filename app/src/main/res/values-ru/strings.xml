@@ -15,6 +15,9 @@
     // Home page
     <string name="recommended">Рекомендуем</string>
 
+    // Detail page
+    <string name="detail">Подробнее</string>
+
     // Profile page
     <string name="warning_account_title">Вы не вошли в аккаунт</string>
     <string name="warning_account_subtitle">Войдите, чтобы получить дополнительные возможности!</string>

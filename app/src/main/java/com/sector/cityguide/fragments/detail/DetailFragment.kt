@@ -32,8 +32,6 @@ class DetailFragment : Fragment() {
     ): View {
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
 
-        activity?.window?.setStatusBarColor(ContextCompat.getColor(requireContext(), R.color.transparent))
-
         return binding.root
     }
 
