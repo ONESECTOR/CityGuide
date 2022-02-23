@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/profile_fragment_layout"
     android:fillViewport="true"
+    android:background="@color/new_white"
     tools:context=".fragments.profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,7 +61,7 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/new_black"
             android:fontFamily="@font/golos_regular"
             android:padding="14dp"
             android:text="@string/sign_in"
