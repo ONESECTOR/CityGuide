@@ -14,7 +14,7 @@
     <string name="test_place_location">Волгоград</string>
 
     // Home page
-    <string name="recommended">Recommended</string>
+    <string name="popular_places">Popular places</string>
 
     // Detail page
     <string name="detail">Detail</string>

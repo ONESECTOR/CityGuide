@@ -1,20 +1,22 @@
 package com.sector.cityguide.fragments.home.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.sector.cityguide.databinding.ItemRecommendationBinding
+import com.sector.cityguide.databinding.ItemPopularBinding
 import com.sector.cityguide.models.Place
 
-class RecommendationsAdapter: ListAdapter<Place, RecommendationsAdapter.ViewHolder>(ItemComparator()) {
+class PopularAdapter: ListAdapter<Place, PopularAdapter.ViewHolder>(ItemComparator()) {
 
-    class ViewHolder(private val binding: ItemRecommendationBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemPopularBinding): RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(place: Place) = with(binding) {
-            tvTitle.text = place.name
-            tvLocation.text = place.location
+            tvTitle.text = "${place.name}, ${place.location}"
+            tvDescription.text = place.description
 
             Glide.with(itemView.context)
                 .load(place.image)
@@ -25,7 +27,7 @@ class RecommendationsAdapter: ListAdapter<Place, RecommendationsAdapter.ViewHold
         companion object {
             fun bind(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemRecommendationBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemPopularBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }

@@ -11,7 +11,7 @@ import com.sector.cityguide.databinding.ItemPlaceBinding
 import com.sector.cityguide.fragments.home.HomeFragmentDirections
 import com.sector.cityguide.models.Place
 
-class HomeAdapter: ListAdapter<Place, HomeAdapter.ViewHolder>(ItemComparator()) {
+class PlaceAdapter: ListAdapter<Place, PlaceAdapter.ViewHolder>(ItemComparator()) {
 
     class ViewHolder(private val binding: ItemPlaceBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(place: Place) = with(binding) {

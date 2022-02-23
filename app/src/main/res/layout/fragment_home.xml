@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/new_white"
     android:fillViewport="true"
-    android:padding="12dp">
+    android:padding="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_marginStart="12dp"
             android:fontFamily="@font/golos_bold"
             android:text="@string/app_name"
-            android:textColor="@color/black"
+            android:textColor="@color/new_black"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,13 +40,13 @@
             tools:listitem="@layout/item_place" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_recommendations"
+            android:id="@+id/tv_popular_places"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/golos_medium"
-            android:text="@string/recommended"
+            android:text="@string/popular_places"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,11 +56,11 @@
             android:id="@+id/btn_more"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/ic_more_vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_places" />
+            app:layout_constraintTop_toTopOf="@id/tv_popular_places"
+            app:layout_constraintBottom_toBottomOf="@id/tv_popular_places"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recommendations"
@@ -73,8 +73,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_recommendations"
-            tools:listitem="@layout/item_recommendation" />
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_places"
+            tools:listitem="@layout/item_popular" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

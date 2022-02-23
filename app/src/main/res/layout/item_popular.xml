@@ -2,36 +2,39 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="5dp"
+    android:background="@color/new_white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="1dp"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ECECEC">
+        android:background="@color/new_white"
+        android:padding="12dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/iv_place"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="10dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/golos_medium"
-            android:maxWidth="90dp"
-            android:text="Родина-мать зовёт"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_location"
+            android:text="Родина-мать зовёт, Волгоградская область"
+            android:textColor="@color/new_black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/iv_place"
@@ -39,14 +42,13 @@
             app:layout_constraintVertical_chainStyle="packed" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_location"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/golos_regular"
-            android:maxWidth="90dp"
             android:text="Волгоградская область"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"

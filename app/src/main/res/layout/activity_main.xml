@@ -30,6 +30,8 @@
         android:id="@+id/bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:background="@color/new_white"
+        android:backgroundTint="@color/new_white"
         app:itemIconTint="@color/new_black"
         app:itemTextColor="@color/new_black"
         app:layout_constraintBottom_toBottomOf="parent"

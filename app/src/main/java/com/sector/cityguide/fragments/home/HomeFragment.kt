@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import com.sector.cityguide.databinding.FragmentHomeBinding
-import com.sector.cityguide.fragments.home.adapters.HomeAdapter
-import com.sector.cityguide.fragments.home.adapters.RecommendationsAdapter
+import com.sector.cityguide.fragments.home.adapters.PlaceAdapter
+import com.sector.cityguide.fragments.home.adapters.PopularAdapter
 import com.sector.cityguide.models.Place
 
 class HomeFragment : Fragment() {
@@ -19,8 +19,8 @@ class HomeFragment : Fragment() {
 
     private var refPlaces: DatabaseReference? = null
     private var refRecommendations: DatabaseReference? = null
-    private lateinit var placesAdapter: HomeAdapter
-    private lateinit var recommendationsAdapter: RecommendationsAdapter
+    private lateinit var placeAdapter: PlaceAdapter
+    private lateinit var popularAdapter: PopularAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupPlaces() {
-        placesAdapter = HomeAdapter()
+        placeAdapter = PlaceAdapter()
 
         binding.rvPlaces.layoutManager = LinearLayoutManager(
             requireContext(),
@@ -51,11 +51,11 @@ class HomeFragment : Fragment() {
             false
         )
 
-        binding.rvPlaces.adapter = placesAdapter
+        binding.rvPlaces.adapter = placeAdapter
     }
 
     private fun setupRecommendations() {
-        recommendationsAdapter = RecommendationsAdapter()
+        popularAdapter = PopularAdapter()
 
         binding.rvRecommendations.layoutManager = LinearLayoutManager(
             requireContext(),
@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
             false
         )
 
-        binding.rvRecommendations.adapter = recommendationsAdapter
+        binding.rvRecommendations.adapter = popularAdapter
     }
 
     private fun getRefForPlaces() {
@@ -88,7 +88,7 @@ class HomeFragment : Fragment() {
                         list.add(place!!)
                     }
 
-                    placesAdapter.submitList(list)
+                    placeAdapter.submitList(list)
                 }
             }
 
@@ -108,7 +108,7 @@ class HomeFragment : Fragment() {
                         list.add(place!!)
                     }
 
-                    recommendationsAdapter.submitList(list)
+                    popularAdapter.submitList(list)
                 }
             }
 
