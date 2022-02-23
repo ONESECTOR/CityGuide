@@ -10,7 +10,7 @@
     tools:context=".fragments.auth.AuthSecondStepFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivLock"
+        android:id="@+id/iv_lock"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginTop="116dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvEnterCode"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -31,10 +31,10 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivLock" />
+        app:layout_constraintTop_toBottomOf="@id/iv_lock" />
 
     <com.chaos.view.PinView
-        android:id="@+id/etCode"
+        android:id="@+id/et_code"
         style="@style/PinWidget.PinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,14 +52,14 @@
         app:itemWidth="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEnterCode"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
         app:lineColor="@color/black"
         app:lineWidth="2dp"
         app:viewType="rectangle"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/tvResendCode"
+        android:id="@+id/tv_resend_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -70,10 +70,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCode" />
+        app:layout_constraintTop_toBottomOf="@+id/et_code" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnConfirm"
+        android:id="@+id/btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"

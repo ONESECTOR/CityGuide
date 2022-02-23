@@ -8,7 +8,7 @@
     tools:context=".fragments.auth.AuthCompletedFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivLogo"
+        android:id="@+id/iv_logo"
         android:layout_width="160dp"
         android:background="@drawable/ic_success_check_mark"
         android:layout_height="160dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAccountWasCreated"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -29,10 +29,10 @@
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+        app:layout_constraintTop_toBottomOf="@id/iv_logo" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAccountWasCreatedDescription"
+        android:id="@+id/tv_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -42,10 +42,10 @@
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvAccountWasCreated" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAccept"
+        android:id="@+id/btn_accept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
