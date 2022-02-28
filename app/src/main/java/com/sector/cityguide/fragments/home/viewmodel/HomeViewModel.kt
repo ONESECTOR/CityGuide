@@ -17,10 +17,10 @@ class HomeViewModel: ViewModel() {
         val timeOfDay = c.get(Calendar.HOUR_OF_DAY)
 
         _greeting.value = when(timeOfDay) {
-            in 0..11 -> R.string.good_morning
-            in 12..15 -> R.string.good_afternoon
-            in 16..20 -> R.string.good_evening
-            in 21..23 -> R.string.good_night
+            in 6..11 -> R.string.good_morning
+            in 12..17 -> R.string.good_afternoon
+            in 18..21 -> R.string.good_evening
+            in 22 downTo 5 -> R.string.good_night
             else -> R.string.hello
         }
     }
