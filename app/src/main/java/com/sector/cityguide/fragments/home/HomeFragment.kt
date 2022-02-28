@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import com.sector.cityguide.databinding.FragmentHomeBinding
 import com.sector.cityguide.fragments.home.adapters.PlaceAdapter
 import com.sector.cityguide.fragments.home.adapters.PopularAdapter
+import com.sector.cityguide.fragments.home.viewmodel.HomeViewModel
 import com.sector.cityguide.models.Place
 
 class HomeFragment : Fragment() {
@@ -39,7 +42,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        viewModel.getGreetingMessage()
+
+        viewModel.greetingMessage().observe(viewLifecycleOwner, Observer {
+            binding.tvGreeting.text = resources.getText(it)
+        })
+
         readFromDatabase()
+
     }
 
     private fun setupPlaces() {

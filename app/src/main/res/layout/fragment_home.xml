@@ -6,45 +6,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/new_white"
-    android:fillViewport="true"
-    android:padding="20dp">
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_app_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/golos_bold"
-            android:text="@string/app_name"
-            android:textColor="@color/new_black"
-            android:textSize="22sp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@color/new_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_greeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/golos_regular"
+            android:textColor="@color/new_black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/civProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/civProfile"
+            app:layout_constraintTop_toTopOf="@id/civProfile" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:textColorHint="@color/new_black"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="18dp"
+            app:boxCornerRadiusBottomStart="18dp"
+            app:boxCornerRadiusTopEnd="18dp"
+            app:boxCornerRadiusTopStart="18dp"
+            app:boxStrokeColor="@color/new_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/civProfile"
+            app:startIconDrawable="@drawable/ic_outline_search"
+            app:startIconTint="@color/new_black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/search"
+                android:textColorHint="@color/new_black"
+                tools:ignore="TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_places"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_app_name"
+            app:layout_constraintTop_toBottomOf="@id/text_input_layout"
             tools:listitem="@layout/item_place" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_popular_places"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/golos_medium"
             android:text="@string/popular_places"
             android:textColor="@color/black"
@@ -58,15 +103,20 @@
             android:layout_height="20dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/ic_more_vertical"
+            app:layout_constraintBottom_toBottomOf="@id/tv_popular_places"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@+id/tv_popular_places"
             app:layout_constraintTop_toTopOf="@id/tv_popular_places"
-            app:layout_constraintBottom_toBottomOf="@id/tv_popular_places"/>
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_popular"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:overScrollMode="never"

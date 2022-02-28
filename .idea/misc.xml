@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Seva/AndroidStudioProjects/app/src/main/res/drawable/ic_outline_search.xml" value="0.1" />
+        <entry key="..\:/Seva/AndroidStudioProjects/app/src/main/res/layout/fragment_home.xml" value="0.26875" />
+        <entry key="..\:/Seva/AndroidStudioProjects/app/src/main/res/layout/item_place.xml" value="0.26875" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/circle_shape.xml" value="0.149" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/favorite_selector.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/gradient.xml" value="0.25462962962962965" />
