@@ -19,6 +19,9 @@
     <string name="good_evening">Добрый вечер</string>
     <string name="good_night">Доброй ночи</string>
     <string name="hello">Здравствуйте</string>
+    <string name="place_search">Поиск мест</string>
+
+    // Search page
     <string name="search">Поиск</string>
 
     // Detail page
