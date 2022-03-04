@@ -3,18 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/new_white"
     android:layout_height="match_parent"
+    android:background="@color/new_white"
     tools:context=".fragments.favorite.FavoriteFragment">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_back"
+        android:backgroundTint="@color/new_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Favorite"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/golos_semi_bold"
+        android:text="Ваше избранное"
+        android:textColor="@color/new_black"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        app:layoutManager="LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        tools:listitem="@layout/favorite_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
