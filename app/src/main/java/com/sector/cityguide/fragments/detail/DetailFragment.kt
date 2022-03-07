@@ -1,12 +1,12 @@
 package com.sector.cityguide.fragments.detail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -62,6 +62,16 @@ class DetailFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.shimmer.startShimmer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.shimmer.stopShimmer()
+    }
+
     private fun addToFavorite() {
         val hashMap = HashMap<String, Any>()
 
@@ -100,10 +110,14 @@ class DetailFragment : Fragment() {
                     } else {
                         binding.btnAddToFavorite.setImageResource(R.drawable.ic_outline_favorite)
                     }
+
+                    binding.shimmer.stopShimmer()
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    Log.e("db_error", error.toString())
+                    binding.btnAddToFavorite.setImageResource(R.drawable.ic_outline_favorite)
                 }
             })
     }
@@ -123,7 +137,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun getPlaceId(): String {
-        return args.currentPlace.id.toString()
+        return args.currentPlace.id
     }
 
     private fun initFirebase() {
@@ -162,6 +176,9 @@ class DetailFragment : Fragment() {
                 .load(image)
                 .centerCrop()
                 .into(ivPlace)
+
+            //shimmer.stopShimmer()
+            //shimmer.visibility = View.GONE
         }
     }
 }
