@@ -60,11 +60,13 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         binding.shimmerPlaces.startShimmer()
+        binding.shimmerPopular.startShimmer()
     }
 
     override fun onPause() {
         super.onPause()
         binding.shimmerPlaces.stopShimmer()
+        binding.shimmerPopular.stopShimmer()
     }
 
     override fun onDestroyView() {
