@@ -1,6 +1,9 @@
 package com.sector.cityguide.fragments.favorite
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +24,7 @@ class FavoriteFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var favoriteAdapter: FavoriteAdapter
+    private lateinit var visibility: String
     private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
@@ -30,7 +34,6 @@ class FavoriteFragment : Fragment() {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
 
         initFirebase()
-        setupRecyclerView()
 
         return binding.root
     }
@@ -38,16 +41,44 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loadFavorites()
-
         binding.btnBack.setOnClickListener {
             activity?.onBackPressed()
+        }
+
+        if (auth.currentUser == null) {
+            binding.layoutYouAreNotLoggedIn.visibility = View.VISIBLE
+        } else {
+            setupRecyclerView()
+            loadFavorites()
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                when(visibility) {
+                    "Visible" -> binding.layoutNoFavorite.visibility = View.VISIBLE
+                    "Invisible" -> binding.layoutNoFavorite.visibility = View.INVISIBLE
+                }
+                binding.shimmer.stopShimmer()
+                binding.shimmer.visibility = View.GONE
+            }, 800)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.apply {
+            shimmer.startShimmer()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.apply {
+            shimmer.startShimmer()
+        }
     }
 
     private fun initFirebase() {
@@ -71,20 +102,23 @@ class FavoriteFragment : Fragment() {
 
         reference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val list = ArrayList<Place>()
+                visibility = if (snapshot.exists()) {
+                    val favoritePlaces = ArrayList<Place>()
 
-                    for (placeSnapshot in snapshot.children) {
-                        val place = placeSnapshot.getValue(Place::class.java)
-                        list.add(place!!)
+                    for (ds in snapshot.children) {
+                        val place = ds.getValue(Place::class.java)
+                        favoritePlaces.add(place!!)
                     }
 
-                    favoriteAdapter.submitList(list)
+                    favoriteAdapter.submitList(favoritePlaces)
+                    "Invisible"
+                } else {
+                    "Visible"
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                Log.e("db_error", error.toString())
             }
         })
     }
