@@ -1,8 +1,6 @@
 package com.sector.cityguide.fragments.home
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +16,6 @@ import com.sector.cityguide.fragments.home.adapters.PlaceAdapter
 import com.sector.cityguide.fragments.home.adapters.PopularAdapter
 import com.sector.cityguide.fragments.home.viewmodel.HomeViewModel
 import com.sector.cityguide.models.Place
-import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
@@ -27,7 +24,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var placeAdapter: PlaceAdapter
     private lateinit var popularAdapter: PopularAdapter
-    private lateinit var inputText: String
 
     private val placesList = ArrayList<Place>()
 
@@ -42,16 +38,6 @@ class HomeFragment : Fragment() {
         setupPopularAdapter()
 
         return binding.root
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        /*if (savedInstanceState != null) {
-            inputText = savedInstanceState.getString("query", "")
-        } else {
-            getPlaces()
-        }*/
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,34 +55,17 @@ class HomeFragment : Fragment() {
         binding.btnSearch.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
-
-        /*binding.btnSearch.setOnClickListener {
-            val query = binding.searchBar.text.toString().lowercase(Locale.getDefault())
-
-            setupPlacesAdapter()
-            filter(query)
-            findNavController().navigate(R.id.action_ho)
-        }*/
-
-        /*binding.searchBar.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, size: Int) {
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-
-            }
-        })*/
     }
 
-    /*override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString("query", inputText)
-    }*/
+    override fun onResume() {
+        super.onResume()
+        binding.shimmerPlaces.startShimmer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.shimmerPlaces.stopShimmer()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -131,18 +100,6 @@ class HomeFragment : Fragment() {
         binding.rvPopular.adapter = popularAdapter
     }
 
-    private fun filter(query: String) {
-        val filteredItem = ArrayList<Place>()
-
-        for (item in placesList) {
-            if (item.name.lowercase(Locale.getDefault()).contains(query)) {
-                filteredItem.add(item)
-            }
-        }
-
-        placeAdapter.submitList(filteredItem)
-    }
-
     private fun getPlaces() {
         val reference = FirebaseDatabase.getInstance().getReference("Places")
         placesList.clear()
@@ -157,6 +114,9 @@ class HomeFragment : Fragment() {
                     }
 
                     placeAdapter.submitList(placesList)
+
+                    binding.shimmerPlaces.stopShimmer()
+                    binding.shimmerPlaces.visibility = View.GONE
                 }
             }
 
@@ -181,6 +141,9 @@ class HomeFragment : Fragment() {
                     }
 
                     popularAdapter.submitList(list)
+
+                    binding.shimmerPopular.stopShimmer()
+                    binding.shimmerPopular.visibility = View.GONE
                 }
             }
 
