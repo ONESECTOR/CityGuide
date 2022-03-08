@@ -1,6 +1,7 @@
 package com.sector.cityguide.fragments.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.sector.cityguide.R
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.sector.cityguide.databinding.FragmentHomeBinding
 import com.sector.cityguide.fragments.home.adapters.PlaceAdapter
@@ -22,6 +24,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var auth: FirebaseAuth
     private lateinit var placeAdapter: PlaceAdapter
     private lateinit var popularAdapter: PopularAdapter
 
@@ -45,6 +48,14 @@ class HomeFragment : Fragment() {
 
         getPopular()
         getPlaces()
+
+        if (auth.currentUser != null) {
+            Log.d("suka", "зашёл")
+            Log.d("suka", auth.uid!!)
+        } else {
+            Log.d("suka", "не зашёл")
+            //Log.d("suka", auth.uid!!)
+        }
 
         val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -76,6 +87,7 @@ class HomeFragment : Fragment() {
 
     private fun initFirebase() {
         FirebaseApp.initializeApp(requireContext())
+        auth = FirebaseAuth.getInstance()
     }
 
     private fun setupPlacesAdapter() {
@@ -106,7 +118,7 @@ class HomeFragment : Fragment() {
         val reference = FirebaseDatabase.getInstance().getReference("Places")
         placesList.clear()
 
-        reference.addValueEventListener(object: ValueEventListener {
+        reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (placeSnapshot in snapshot.children) {
@@ -131,7 +143,7 @@ class HomeFragment : Fragment() {
     private fun getPopular() {
         val reference = FirebaseDatabase.getInstance().getReference("Popular")
 
-        reference.addValueEventListener(object: ValueEventListener {
+        reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val list = ArrayList<Place>()

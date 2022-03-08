@@ -9,9 +9,6 @@
     <string name="favorite">Favorite</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
-    <string name="sign_in">Sign in</string>
-    <string name="test_place">Родина-мать зовёт</string>
-    <string name="test_place_location">Волгоград</string>
 
     // Home page
     <string name="popular_places">Popular place</string>
@@ -21,7 +18,7 @@
     <string name="good_night">Good Night</string>
     <string name="hello">Hello</string>
     <string name="place_search">Place search</string>
-    
+
     // Search page
     <string name="search">Search</string>
 
@@ -32,16 +29,14 @@
     <string name="warning_account_title">You are not logged in</string>
     <string name="warning_account_subtitle">Sign in to get more features!</string>
 
-    // Login page
-    <string name="sign_in_to_access">Sign in to access all app features</string>
-    <string name="remember_me">Remember me</string>
-    <string name="welcome_back">Welcome back</string>
-    <string name="dont_have_an_account">Don\'t have an account? Register!</string>
-
-    // OTP verification
+    // Auth
     <string name="phone_number">Phone number</string>
     <string name="we_send_you">We will send you a verification code</string>
     <string name="enter_phone_number">Enter phone number</string>
     <string name="enter_code">Enter confirmation code</string>
     <string name="resend_code">Didn\'t receive a code? Resend</string>
+    <string name="third_auth_title">Enter your name</string>
+    <string name="third_auth_subtitle">This will make it easier for us to contact you :)</string>
+    <string name="name">Name</string>
+    <string name="name_error">Field can\'t be empty!</string>
 </resources>

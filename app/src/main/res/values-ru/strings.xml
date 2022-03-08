@@ -9,8 +9,6 @@
     <string name="favorite">Избранное</string>
     <string name="home">Главная</string>
     <string name="profile">Профиль</string>
-    <string name="test_place">Родина-мать зовёт</string>
-    <string name="test_place_location">Волгоград</string>
 
     // Home page
     <string name="popular_places">Популярное место</string>
@@ -31,17 +29,14 @@
     <string name="warning_account_title">Вы не вошли в аккаунт</string>
     <string name="warning_account_subtitle">Войдите, чтобы получить дополнительные возможности!</string>
 
-    // Login page
-    <string name="sign_in">Войти</string>
-    <string name="sign_in_to_access">Войдите, чтобы получить доступ ко всем функциям приложения</string>
-    <string name="remember_me">Запомнить меня</string>
-    <string name="welcome_back">С возвращением!</string>
-    <string name="dont_have_an_account">Ещё нет аккаунта? Зарегистрируйтесь!</string>
-
-    // OTP verification
+    // Auth
     <string name="phone_number">Номер телефона</string>
     <string name="we_send_you">Мы отправим вам на него код подтверждения</string>
     <string name="enter_phone_number">Введите номер телефона</string>
     <string name="enter_code">Введите код подтверждения</string>
     <string name="resend_code">Не пришёл код? Отправить снова</string>
+    <string name="third_auth_title">Введите ваше имя</string>
+    <string name="third_auth_subtitle">Так нам будет проще к вам обращаться :)</string>
+    <string name="name">Имя</string>
+    <string name="name_error">Поле не может быть пустым!</string>
 </resources>

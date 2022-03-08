@@ -43,6 +43,11 @@ class AuthFirstStepFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun initFirebase() {
         auth = FirebaseAuth.getInstance()
     }

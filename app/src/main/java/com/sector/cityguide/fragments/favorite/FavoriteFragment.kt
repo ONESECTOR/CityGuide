@@ -41,24 +41,28 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnBack.setOnClickListener {
-            activity?.onBackPressed()
-        }
+        binding.apply {
+            btnBack.setOnClickListener {
+                activity?.onBackPressed()
+            }
 
-        if (auth.currentUser == null) {
-            binding.layoutYouAreNotLoggedIn.visibility = View.VISIBLE
-        } else {
-            setupRecyclerView()
-            loadFavorites()
+            if (auth.currentUser == null) {
+                shimmer.stopShimmer()
+                shimmer.visibility = View.GONE
+                layoutYouAreNotLoggedIn.visibility = View.VISIBLE
+            } else {
+                setupRecyclerView()
+                loadFavorites()
 
-            Handler(Looper.getMainLooper()).postDelayed({
-                when(visibility) {
-                    "Visible" -> binding.layoutNoFavorite.visibility = View.VISIBLE
-                    "Invisible" -> binding.layoutNoFavorite.visibility = View.INVISIBLE
-                }
-                binding.shimmer.stopShimmer()
-                binding.shimmer.visibility = View.GONE
-            }, 800)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    when(visibility) {
+                        "Visible" -> layoutNoFavorite.visibility = View.VISIBLE
+                        "Invisible" -> layoutNoFavorite.visibility = View.INVISIBLE
+                    }
+                    shimmer.stopShimmer()
+                    shimmer.visibility = View.GONE
+                }, 800)
+            }
         }
     }
 

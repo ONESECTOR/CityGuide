@@ -20,7 +20,10 @@ import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentAuthSecondStepBinding
 import java.util.*
@@ -54,6 +57,11 @@ class AuthSecondStepFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun getVerificationId(): String {
         return args.verificationId
     }
@@ -85,48 +93,25 @@ class AuthSecondStepFragment : Fragment() {
             }
         }
 
-        when(Locale.getDefault().language) {
-            "en" -> {
-                spannableString.setSpan(
-                    spanStyle,
-                    22,
-                    29,
-                    SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-                spannableString.setSpan(
-                    colorSpan,
-                    22,
-                    29,
-                    SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-                spannableString.setSpan(
-                    clickableSpan,
-                    22,
-                    29,
-                    SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-            }
-            "ru" -> {
-                spannableString.setSpan(
-                    spanStyle,
-                    15,
-                    30,
-                    SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-                spannableString.setSpan(
-                    colorSpan,
-                    15,
-                    30,
-                    SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-                spannableString.setSpan(
-                    clickableSpan,
-                    15,
-                    30,
-                    SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-            }
-        }
+        spannableString.setSpan(
+            spanStyle,
+            15,
+            30,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableString.setSpan(
+            colorSpan,
+            15,
+            30,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableString.setSpan(
+            clickableSpan,
+            15,
+            30,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
         binding.tvResendCode.text = spannableString
         binding.tvResendCode.movementMethod = LinkMovementMethod.getInstance()
     }
@@ -140,7 +125,7 @@ class AuthSecondStepFragment : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     Log.d("MyTag", "signInWithCredential:success")
-                    saveUser()
+                    checkUserExist()
                 } else {
                     Log.w("MyTag", "signInWithCredential:failure", task.exception)
                 }
@@ -150,12 +135,10 @@ class AuthSecondStepFragment : Fragment() {
     private fun saveUser() {
         val uid = auth.uid
 
-        // user data preparation
         val hashMap: HashMap<String, Any?> = HashMap()
         hashMap["uid"] = uid
         hashMap["phone"] = getPhoneNumber()
 
-        // setup user data to database
         val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.child(uid!!)
             .setValue(hashMap)
@@ -166,5 +149,26 @@ class AuthSecondStepFragment : Fragment() {
             .addOnFailureListener {
                 Toast.makeText(requireContext(), "Failure!", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun checkUserExist() {
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
+
+        ref.child(auth.uid!!)
+            .addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    Log.d("auth", "Пользователь существует")
+                    findNavController().navigate(R.id.action_authSecondStepFragment_to_authCompletedFragment)
+                } else {
+                    Log.d("auth", "Пользователь не существует")
+                    saveUser()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                throw error.toException()
+            }
+        })
     }
 }
