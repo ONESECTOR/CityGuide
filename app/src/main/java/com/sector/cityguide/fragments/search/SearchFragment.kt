@@ -70,6 +70,8 @@ class SearchFragment : Fragment() {
                     binding.layoutNoPlaces.visibility = View.GONE
                 }
 
+                searchAdapter.notifyDataSetChanged()
+
                 return false
             }
         })
