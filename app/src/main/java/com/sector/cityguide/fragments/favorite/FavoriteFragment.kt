@@ -1,5 +1,6 @@
 package com.sector.cityguide.fragments.favorite
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -51,17 +52,17 @@ class FavoriteFragment : Fragment() {
                 shimmer.visibility = View.GONE
                 layoutYouAreNotLoggedIn.visibility = View.VISIBLE
             } else {
-                setupRecyclerView()
-                loadFavorites()
+                if (favoritesExist()) {
+                    setupRecyclerView()
+                    loadFavorites()
 
-                Handler(Looper.getMainLooper()).postDelayed({
-                    when(visibility) {
-                        "Visible" -> layoutNoFavorite.visibility = View.VISIBLE
-                        "Invisible" -> layoutNoFavorite.visibility = View.INVISIBLE
-                    }
                     shimmer.stopShimmer()
                     shimmer.visibility = View.GONE
-                }, 800)
+                } else {
+                    shimmer.stopShimmer()
+                    shimmer.visibility = View.GONE
+                    layoutNoFavorite.visibility = View.VISIBLE
+                }
             }
         }
     }
@@ -106,7 +107,7 @@ class FavoriteFragment : Fragment() {
 
         reference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                visibility = if (snapshot.exists()) {
+                if (snapshot.exists()) {
                     val favoritePlaces = ArrayList<Place>()
 
                     for (ds in snapshot.children) {
@@ -115,9 +116,6 @@ class FavoriteFragment : Fragment() {
                     }
 
                     favoriteAdapter.submitList(favoritePlaces)
-                    "Invisible"
-                } else {
-                    "Visible"
                 }
             }
 
@@ -125,5 +123,11 @@ class FavoriteFragment : Fragment() {
                 Log.e("db_error", error.toString())
             }
         })
+    }
+
+    private fun favoritesExist(): Boolean {
+        val prefs = requireActivity().getSharedPreferences("favorites", Context.MODE_PRIVATE)
+        Log.d("favorites", prefs.getBoolean("exist", false).toString())
+        return prefs.getBoolean("exist", false)
     }
 }
