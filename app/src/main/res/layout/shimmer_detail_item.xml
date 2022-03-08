@@ -18,13 +18,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/new_black">
+            android:background="@color/dark_white">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_place"
                 android:layout_width="match_parent"
                 android:layout_height="420dp"
-                android:background="@color/new_black"
+                android:background="@color/dark_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
