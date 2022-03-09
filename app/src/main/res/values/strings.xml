@@ -10,10 +10,6 @@
     <string name="home">Home</string>
     <string name="profile">Profile</string>
 
-    // Splash
-    <string name="copyright" translatable="false">Copyright @ 2022 | onesector</string>
-    <string name="app_name_splash" translatable="false">CITY\nGUIDE</string>
-
     // Home page
     <string name="popular_places">Popular place</string>
     <string name="good_morning">Good Morning</string>

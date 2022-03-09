@@ -43,6 +43,7 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_settings_light.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_person.xml" value="0.25462962962962965" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_phone.xml" value="0.1725752508361204" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_splash.xml" value="0.1485" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_success_check_mark.xml" value="0.149" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/profile_selector.xml" value="0.1505" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/rounded_bottom_nav.xml" value="0.1505" />
@@ -68,7 +69,7 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_search.xml" value="0.2" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_settings.xml" value="0.16385135135135134" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_signup.xml" value="0.16385135135135134" />
-        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_splash_screen.xml" value="0.16385135135135134" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_splash_screen.xml" value="0.264" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_user.xml" value="0.16" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_welcome.xml" value="0.16385135135135134" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/item_place.xml" value="0.264" />
