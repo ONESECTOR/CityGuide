@@ -20,10 +20,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentAuthSecondStepBinding
 import java.util.*
@@ -35,6 +32,8 @@ class AuthSecondStepFragment : Fragment() {
     private val args by navArgs<AuthSecondStepFragmentArgs>()
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var listener: ValueEventListener
+    private lateinit var reference: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +54,12 @@ class AuthSecondStepFragment : Fragment() {
         binding.btnConfirm.setOnClickListener {
             verify()
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        reference.removeEventListener(listener)
     }
 
     override fun onDestroyView() {
@@ -124,44 +129,48 @@ class AuthSecondStepFragment : Fragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    Log.d("MyTag", "signInWithCredential:success")
+                    //Log.d("MyTag", "signInWithCredential:success")
+                    // Success
                     checkUserExist()
-                } else {
-                    Log.w("MyTag", "signInWithCredential:failure", task.exception)
                 }
             }
     }
 
     private fun saveUser() {
-        val uid = auth.uid
-
         val hashMap: HashMap<String, Any?> = HashMap()
-        hashMap["uid"] = uid
+        hashMap["uid"] = auth.uid
         hashMap["phone"] = getPhoneNumber()
 
-        val ref = FirebaseDatabase.getInstance().getReference("Users")
-        ref.child(uid!!)
+        val ref = FirebaseDatabase.getInstance()
+            .getReference("Users")
+            .child(auth.uid!!)
             .setValue(hashMap)
             .addOnSuccessListener {
                 Toast.makeText(requireContext(), "Saved!", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_authSecondStepFragment_to_authCompletedFragment)
+                // User successfully saved
+                findNavController().navigate(
+                    R.id.action_authSecondStepFragment_to_authCompletedFragment
+                )
             }
             .addOnFailureListener {
+                // Failure
                 Toast.makeText(requireContext(), "Failure!", Toast.LENGTH_SHORT).show()
             }
     }
 
     private fun checkUserExist() {
-        val ref = FirebaseDatabase.getInstance().getReference("Users")
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(auth.uid!!)
 
-        ref.child(auth.uid!!)
-            .addValueEventListener(object: ValueEventListener {
+        listener = object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    Log.d("auth", "Пользователь существует")
-                    findNavController().navigate(R.id.action_authSecondStepFragment_to_authCompletedFragment)
+                    // User exist
+                    findNavController().navigate(
+                        R.id.action_authSecondStepFragment_to_authCompletedFragment
+                    )
                 } else {
-                    Log.d("auth", "Пользователь не существует")
+                    // User not exist
+                    reference.removeEventListener(listener)
                     saveUser()
                 }
             }
@@ -169,6 +178,8 @@ class AuthSecondStepFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 throw error.toException()
             }
-        })
+        }
+
+        reference.addValueEventListener(listener)
     }
 }

@@ -31,6 +31,8 @@ class HomeFragment : Fragment() {
     private lateinit var placeAdapter: PlaceAdapter
     private lateinit var popularAdapter: PopularAdapter
 
+    private lateinit var listener: ValueEventListener
+
     private val placesList = ArrayList<Place>()
 
     override fun onCreateView(
