@@ -3,11 +3,13 @@ package com.sector.cityguide.fragments.home.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sector.cityguide.databinding.ItemPopularBinding
+import com.sector.cityguide.fragments.home.HomeFragmentDirections
 import com.sector.cityguide.models.Place
 
 class PopularAdapter: ListAdapter<Place, PopularAdapter.ViewHolder>(ItemComparator()) {
@@ -49,6 +51,12 @@ class PopularAdapter: ListAdapter<Place, PopularAdapter.ViewHolder>(ItemComparat
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder) {
             bind(getItem(position))
+
+            itemView.setOnClickListener {
+                itemView.findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToDetailFragment(getItem(position))
+                )
+            }
         }
     }
 }
