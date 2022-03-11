@@ -35,7 +35,13 @@ class AuthFirstStepFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnNext.setOnClickListener {
-            sendCode()
+            if (getPhoneNumber().length != 12) {
+                binding.phoneNumberContainer.error = "Введите корректный номер телефона"
+            } else {
+                binding.phoneNumberContainer.error = null
+                binding.progressBar.visibility = View.VISIBLE
+                sendCode()
+            }
         }
 
         binding.btnBack.setOnClickListener {
@@ -67,8 +73,8 @@ class AuthFirstStepFragment : Fragment() {
     private fun getPhoneNumber(): String {
         val prefix = binding.phoneNumberContainer.prefixText.toString()
         val editText = binding.etPhoneNumber.text.toString().trim()
-        val phoneNumber = "$prefix$editText"
-        return phoneNumber
+
+        return "$prefix$editText"
     }
 
     private fun setCallbacks() {
@@ -90,17 +96,15 @@ class AuthFirstStepFragment : Fragment() {
             ) {
                 // When the OTP code is successfully sent
                 Log.d("MyTag", "success!")
-                openConfirmFragment(verificationId)
+                binding.progressBar.visibility = View.GONE
+
+                val action = AuthFirstStepFragmentDirections.
+                actionAuthFirstStepFragmentToAuthSecondStepFragment(
+                    verificationId = verificationId,
+                    phoneNumber = getPhoneNumber()
+                )
+                findNavController().navigate(action)
             }
         }
-    }
-
-    private fun openConfirmFragment(verificationId: String) {
-        val action = AuthFirstStepFragmentDirections.
-        actionPhoneFragmentToConfirmPhoneFragment(
-            verificationId = verificationId,
-            phoneNumber = getPhoneNumber()
-        )
-        findNavController().navigate(action)
     }
 }

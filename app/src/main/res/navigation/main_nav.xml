@@ -51,7 +51,7 @@
         android:label="fragment_auth_first_step"
         tools:layout="@layout/fragment_auth_first_step">
         <action
-            android:id="@+id/action_phoneFragment_to_confirmPhoneFragment"
+            android:id="@+id/action_authFirstStepFragment_to_authSecondStepFragment"
             app:destination="@id/authSecondStepFragment"
             app:popUpTo="@id/authFirstStepFragment"
             app:popUpToInclusive="true" />
