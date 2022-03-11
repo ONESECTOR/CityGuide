@@ -22,14 +22,16 @@
         android:id="@+id/tv_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:fontFamily="@font/golos_medium"
         android:text="@string/detail"
+        android:layout_marginStart="20dp"
         android:textColor="@color/new_black"
-        android:textSize="18sp"
+        app:layout_constraintHorizontal_bias="0"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_layout"

@@ -20,6 +20,11 @@
     <string name="hello">Здравствуйте</string>
     <string name="place_search">Поиск мест</string>
 
+    // Favorite
+    <string name="your_favorites">Ваше избранное</string>
+    <string name="empty_favorites">В вашем избранном ничего нет</string>
+    <string name="sign_in_to_add_favorites">Войдите в аккаунт, чтобы добавлять в избранное</string>
+
     // Search page
     <string name="search">Поиск</string>
 
