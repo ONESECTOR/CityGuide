@@ -11,7 +11,8 @@
     <string name="profile">Профиль</string>
 
     // Home page
-    <string name="popular_places">Популярное место</string>
+    <string name="popular">Популярное</string>
+    <string name="historical_places">Исторические места</string>
     <string name="good_morning">Доброе утро</string>
     <string name="good_afternoon">Добрый день</string>
     <string name="good_evening">Добрый вечер</string>

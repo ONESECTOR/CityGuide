@@ -15,13 +15,12 @@ class PopularAdapter: ListAdapter<Place, PopularAdapter.ViewHolder>(ItemComparat
     class ViewHolder(private val binding: ItemPopularBinding): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(place: Place) = with(binding) {
-            tvTitle.text = "${place.name}, ${place.location}"
-            tvDescription.text = place.description
+            tvTitle.text = place.name
 
             Glide.with(itemView.context)
                 .load(place.image)
                 .centerCrop()
-                .into(ivPlace)
+                .into(imageView)
         }
 
         companion object {
