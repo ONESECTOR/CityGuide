@@ -27,6 +27,8 @@
 
     // Search page
     <string name="search">Search</string>
+    <string name="no_such_places">Sorry, no such places found</string>
+    <string name="search_greeting">Search among dozens of interesting places!</string>
 
     // Detail page
     <string name="detail">Detail</string>

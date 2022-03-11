@@ -133,6 +133,8 @@ class SearchFragment : Fragment() {
         filteredList = filteredListTemp
         searchAdapter.submitList(filteredList)
 
+        binding.layoutNoPlaces.visibility = View.INVISIBLE
+
         if (filteredList.isEmpty()) {
             Log.d("Test", "Ничего не найдено")
             binding.layoutNoPlaces.visibility = View.VISIBLE

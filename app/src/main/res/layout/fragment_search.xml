@@ -5,56 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/new_white"
-    android:paddingStart="20dp"
-    android:paddingTop="20dp"
-    android:paddingEnd="20dp"
     tools:context=".fragments.search.SearchFragment">
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_title"
+        android:id="@+id/tv_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:fontFamily="@font/golos_medium"
         android:text="@string/search"
         android:textColor="@color/new_black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/search_background"
-        android:drawableStart="@drawable/ic_outline_search"
-        android:drawablePadding="10dp"
-        android:drawableTint="@color/new_black"
         android:fontFamily="@font/golos_regular"
-        android:hint="Название или регион"
         android:textColor="@color/new_black"
         android:textColorHint="@color/new_black"
+        app:defaultQueryHint="Название или регион"
+        app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_back"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/new_black"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:minWidth="0dp"
-        android:padding="12dp"
-        app:cornerRadius="15dp"
-        app:icon="@drawable/ic_back"
-        app:iconPadding="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@id/tv_search"
+        app:searchIcon="@null" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_found_places"
@@ -67,7 +62,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        app:layout_constraintTop_toBottomOf="@id/search_view"
         tools:listitem="@layout/item_popular" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -77,14 +72,14 @@
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_back">
+        app:layout_constraintTop_toBottomOf="@id/search_view">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title_start_searching"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/golos_regular"
-            android:text="Ищите среди сотен интересных мест!"
+            android:text="@string/search_greeting"
             android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,14 +96,14 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_back">
+        app:layout_constraintTop_toBottomOf="@id/search_view">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title_no_places"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/golos_regular"
-            android:text="К сожалению, таких мест не найдено"
+            android:text="@string/no_such_places"
             android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"

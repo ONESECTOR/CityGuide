@@ -27,6 +27,8 @@
 
     // Search page
     <string name="search">Поиск</string>
+    <string name="no_such_places">К сожалению, таких мест не найдено</string>
+    <string name="search_greeting">Ищите среди десятков интересных мест!</string>
 
     // Detail page
     <string name="detail">Подробнее</string>
