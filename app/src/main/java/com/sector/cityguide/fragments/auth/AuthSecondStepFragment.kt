@@ -206,7 +206,7 @@ class AuthSecondStepFragment : Fragment() {
         val ref = FirebaseDatabase.getInstance()
             .getReference("Users")
             .child(auth.uid!!)
-            .child("Info")
+            .child(0.toString())
             .setValue(hashMap)
             .addOnSuccessListener {
                 Toast.makeText(requireContext(), "Saved!", Toast.LENGTH_SHORT).show()

@@ -102,8 +102,8 @@
             app:popUpTo="@id/editNameFragment"
             app:popUpToInclusive="true" />
         <argument
-            android:name="profile"
-            app:argType="com.sector.cityguide.models.Profile" />
+            android:name="profileName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/aboutAppFragment"

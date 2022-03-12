@@ -22,13 +22,13 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var profileAdapter: ProfileAdapter
 
     private var nameReference: DatabaseReference? = null
-    private var aboutAppReference: DatabaseReference? = null
+    private var phoneReference: DatabaseReference? = null
 
     private lateinit var nameListener: ValueEventListener
-    private lateinit var aboutAppListener: ValueEventListener
+    private lateinit var phoneListener: ValueEventListener
+    private lateinit var name: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,14 +47,10 @@ class ProfileFragment : Fragment() {
         if (auth.currentUser != null) {
             binding.button.text = "Выйти"
 
-            setupRecyclerView()
-            checkName()
             checkPhone()
+            checkName()
         } else {
-            binding.rvProfile.visibility = View.GONE
-            binding.divider.visibility = View.GONE
-            binding.tvPhoneNumber.visibility = View.GONE
-            binding.tvAdditionally.visibility = View.GONE
+            hideLayout()
             binding.button.text = "Войти"
         }
 
@@ -64,13 +60,19 @@ class ProfileFragment : Fragment() {
             )
         }
 
+        binding.btnChangeName.setOnClickListener {
+            findNavController().navigate(
+                ProfileFragmentDirections.actionProfileFragmentToEditNameFragment(
+                    profileName = name
+                )
+            )
+        }
+
         binding.button.setOnClickListener {
             if (auth.currentUser != null) {
                 auth.signOut()
-                binding.rvProfile.visibility = View.GONE
-                binding.divider.visibility = View.GONE
-                binding.tvPhoneNumber.visibility = View.GONE
-                binding.tvAdditionally.visibility = View.GONE
+                hideLayout()
+
                 binding.button.text = "Войти"
             } else {
                 findNavController().navigate(R.id.action_profileFragment_to_authFirstStepFragment)
@@ -82,14 +84,7 @@ class ProfileFragment : Fragment() {
         super.onPause()
 
         nameReference?.removeEventListener(nameListener)
-        aboutAppReference?.removeEventListener(aboutAppListener)
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        nameReference?.addValueEventListener(nameListener)
-        aboutAppReference?.addValueEventListener(aboutAppListener)
+        phoneReference?.removeEventListener(phoneListener)
     }
 
     private fun initFirebase() {
@@ -97,21 +92,22 @@ class ProfileFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
     }
 
-    private fun setupRecyclerView() {
-        profileAdapter = ProfileAdapter()
-
-        binding.rvProfile.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvProfile.adapter = profileAdapter
+    private fun hideLayout() {
+        binding.apply {
+            divider.visibility = View.GONE
+            tvPhoneNumber.visibility = View.GONE
+            tvAdditionally.visibility = View.GONE
+        }
     }
 
     private fun checkPhone() {
-        aboutAppReference = FirebaseDatabase.getInstance()
+        phoneReference = FirebaseDatabase.getInstance()
             .getReference("Users")
             .child(auth.uid!!)
-            .child("Info")
+            .child(0.toString())
             .child("phone")
 
-        aboutAppListener = object : ValueEventListener {
+        phoneListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val phone = snapshot.value.toString()
@@ -122,40 +118,36 @@ class ProfileFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+
             }
         }
+
+        phoneReference?.addValueEventListener(phoneListener)
     }
 
     private fun checkName() {
         nameReference = FirebaseDatabase.getInstance()
             .getReference("Users")
             .child(auth.uid!!)
-
-        // Почему нет .child("Info") ??????
+            .child(0.toString())
+            .child("name")
 
         nameListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val profileList = ArrayList<Profile>()
+                name = snapshot.value.toString()
 
-                    for (ds in snapshot.children) {
-                        val title = ds.getValue(Profile::class.java)
-
-                        profileList.add(title!!)
-                    }
-
-                    profileAdapter.submitList(profileList)
-
-                    //Log.d("title", snapshot.value.toString())
+                if (name.isEmpty()) {
+                    binding.tvTitleName.text = "Введите имя"
+                } else {
+                    binding.tvTitleName.text = name
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                throw error.toException()
+
             }
         }
 
-        //reference?.addValueEventListener(listener)
+        nameReference?.addValueEventListener(nameListener)
     }
 }

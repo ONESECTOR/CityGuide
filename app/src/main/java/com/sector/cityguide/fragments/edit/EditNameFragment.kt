@@ -52,7 +52,7 @@ class EditNameFragment : Fragment() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 name = binding.etName.rawText
 
-                if (name.isNotEmpty() || args.profile.name.isNotEmpty()) {
+                if (name.isNotEmpty() || args.profileName.isNotEmpty()) {
                     enableButton()
                 } else {
                     disableButton()
@@ -93,7 +93,7 @@ class EditNameFragment : Fragment() {
         reference = FirebaseDatabase.getInstance()
             .getReference("Users")
             .child(auth.uid!!)
-            .child("Info")
+            .child(0.toString())
 
         listener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -115,7 +115,7 @@ class EditNameFragment : Fragment() {
     }
 
     private fun setExistingName() {
-        val nameFromArgs = args.profile.name
+        val nameFromArgs = args.profileName
         name = nameFromArgs
 
         binding.etName.setText(nameFromArgs)

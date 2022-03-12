@@ -41,12 +41,51 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_profile" />
 
+        <!-- About app clickable layout-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btn_change_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_phone_number">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/golos_regular"
+                android:textSize="21sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_next_change"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_next_change"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_next"
+                android:tint="@color/new_black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:overScrollMode="never"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_phone_number"
@@ -61,7 +100,7 @@
             android:background="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_profile" />
+            app:layout_constraintTop_toBottomOf="@id/btn_change_name" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_additionally"
@@ -76,6 +115,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider" />
 
+        <!-- About app clickable layout-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_about_app"
             android:layout_width="match_parent"
