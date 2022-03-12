@@ -30,8 +30,10 @@ class HomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var placeAdapter: PlaceAdapter
     private lateinit var popularAdapter: PopularAdapter
+    private lateinit var nameListener: ValueEventListener
+    private lateinit var greetingMessage: String
 
-    private lateinit var listener: ValueEventListener
+    private var nameReference: DatabaseReference? = null
 
     private val placesList = ArrayList<Place>()
 
@@ -55,18 +57,27 @@ class HomeFragment : Fragment() {
         getPopular()
         getPlaces()
 
-        if (auth.currentUser != null) {
-            checkFavorites()
-        }
-
         val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         viewModel.greetingMessage().observe(viewLifecycleOwner) { greeting ->
-            binding.tvGreeting.text = resources.getText(greeting)
+            greetingMessage = resources.getText(greeting).toString()
+        }
+
+        if (auth.currentUser != null) {
+            checkFavorites()
+            checkName()
+        } else {
+            binding.tvGreeting.text = greetingMessage
         }
 
         binding.btnSearch.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
+
+        binding.civProfile.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_homeFragment_to_profileFragment
+            )
         }
     }
 
@@ -80,6 +91,8 @@ class HomeFragment : Fragment() {
         super.onPause()
         binding.shimmerPlaces.stopShimmer()
         binding.shimmerPopular.stopShimmer()
+
+        nameReference?.removeEventListener(nameListener)
     }
 
     override fun onDestroyView() {
@@ -90,6 +103,32 @@ class HomeFragment : Fragment() {
     private fun initFirebase() {
         FirebaseApp.initializeApp(requireContext())
         auth = FirebaseAuth.getInstance()
+    }
+
+    private fun checkName() {
+        nameReference = FirebaseDatabase.getInstance()
+            .getReference("Users")
+            .child(auth.uid!!)
+            .child(0.toString())
+            .child("name")
+
+        nameListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val name = snapshot.value.toString()
+
+                if (name.isEmpty()) {
+                    binding.tvGreeting.text = greetingMessage
+                } else {
+                    binding.tvGreeting.text = "$greetingMessage, $name"
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        }
+
+        nameReference?.addValueEventListener(nameListener)
     }
 
     private fun getProfileUid(): String {
