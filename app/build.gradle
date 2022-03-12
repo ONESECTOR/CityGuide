@@ -64,9 +64,9 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
-    // Pin View
-    implementation 'io.github.chaosleung:pinview:1.4.4'
-
     // Shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // Masked EditText (and add this to root layout: xmlns:mask="http://schemas.android.com/apk/res-auto")
+    implementation 'ru.egslava:MaskedEditText:1.0.5'
 }

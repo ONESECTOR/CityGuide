@@ -1,20 +1,23 @@
 package com.sector.cityguide.fragments.auth
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Editable
 import android.text.SpannableString
 import android.text.TextPaint
+import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
@@ -35,6 +38,8 @@ class AuthSecondStepFragment : Fragment() {
     private lateinit var listener: ValueEventListener
     private lateinit var reference: DatabaseReference
 
+    private lateinit var code: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +47,7 @@ class AuthSecondStepFragment : Fragment() {
         _binding = FragmentAuthSecondStepBinding.inflate(inflater, container, false)
 
         initFirebase()
+        disableButton()
 
         return binding.root
     }
@@ -51,7 +57,28 @@ class AuthSecondStepFragment : Fragment() {
 
         setSpannableString()
 
+        binding.etCode.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                code = binding.etCode.rawText
+
+                if (code.length != 6) {
+                    disableButton()
+                } else {
+                    enableButton()
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+        })
+
         binding.btnConfirm.setOnClickListener {
+            binding.progressLayout.visibility = View.VISIBLE
             verify()
         }
     }
@@ -67,6 +94,44 @@ class AuthSecondStepFragment : Fragment() {
         _binding = null
     }
 
+    private fun enableButton() {
+        binding.apply {
+            btnConfirm.isEnabled = true
+
+            btnConfirm.setTextColor(
+                ContextCompat.getColor(
+                requireContext(),
+                R.color.new_white)
+            )
+
+            btnConfirm.backgroundTintList = ColorStateList.valueOf(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.new_black
+                )
+            )
+        }
+    }
+
+    private fun disableButton() {
+        binding.apply {
+            btnConfirm.isEnabled = false
+
+            btnConfirm.setTextColor(
+                ContextCompat.getColor(
+                requireContext(),
+                R.color.gray)
+            )
+
+            btnConfirm.backgroundTintList = ColorStateList.valueOf(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.silver
+                )
+            )
+        }
+    }
+
     private fun getVerificationId(): String {
         return args.verificationId
     }
@@ -76,9 +141,6 @@ class AuthSecondStepFragment : Fragment() {
     }
 
     private fun verify() {
-        val code = binding.etCode.text.toString().trim()
-        Log.d("code", code)
-
         val credential = PhoneAuthProvider.getCredential(getVerificationId(), code)
         signInWithPhoneAuthCredential(credential)
     }
@@ -129,7 +191,6 @@ class AuthSecondStepFragment : Fragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    //Log.d("MyTag", "signInWithCredential:success")
                     // Success
                     checkUserExist()
                 }
@@ -148,8 +209,10 @@ class AuthSecondStepFragment : Fragment() {
             .addOnSuccessListener {
                 Toast.makeText(requireContext(), "Saved!", Toast.LENGTH_SHORT).show()
                 // User successfully saved
+                binding.progressLayout.visibility = View.GONE
+
                 findNavController().navigate(
-                    R.id.action_authSecondStepFragment_to_authCompletedFragment
+                    R.id.action_authSecondStepFragment_to_profileFragment
                 )
             }
             .addOnFailureListener {
@@ -165,8 +228,10 @@ class AuthSecondStepFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     // User exist
+                    binding.progressLayout.visibility = View.GONE
+
                     findNavController().navigate(
-                        R.id.action_authSecondStepFragment_to_authCompletedFragment
+                        R.id.action_authSecondStepFragment_to_profileFragment
                     )
                 } else {
                     // User not exist

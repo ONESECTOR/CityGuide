@@ -1,14 +1,19 @@
 package com.sector.cityguide.fragments.auth
 
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
+import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentAuthFirstStepBinding
 import java.util.concurrent.TimeUnit
 
@@ -19,6 +24,8 @@ class AuthFirstStepFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
+    private lateinit var phoneNumber: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +34,7 @@ class AuthFirstStepFragment : Fragment() {
 
         initFirebase()
         setCallbacks()
+        disableButton()
 
         return binding.root
     }
@@ -34,14 +42,33 @@ class AuthFirstStepFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnNext.setOnClickListener {
-            if (getPhoneNumber().length != 12) {
-                binding.phoneNumberContainer.error = "Введите корректный номер телефона"
-            } else {
-                binding.phoneNumberContainer.error = null
-                binding.progressBar.visibility = View.VISIBLE
-                sendCode()
+        binding.etPhone.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
             }
+
+            override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, size: Int) {
+                val editText = binding.etPhone.rawText
+                val prefix = "+7"
+
+                phoneNumber = "$prefix$editText".trim()
+
+                if (phoneNumber.length != 12) {
+                    disableButton()
+                } else {
+                    enableButton()
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+        })
+
+        binding.btnSendCode.setOnClickListener {
+            binding.progressLayout.visibility = View.VISIBLE
+
+            sendCode()
         }
 
         binding.btnBack.setOnClickListener {
@@ -58,11 +85,45 @@ class AuthFirstStepFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
     }
 
-    private fun sendCode() {
-        Log.d("MyTag", getPhoneNumber())
+    private fun enableButton() {
+        binding.apply {
+            btnSendCode.isEnabled = true
 
+            btnSendCode.setTextColor(ContextCompat.getColor(
+                requireContext(),
+                R.color.new_white)
+            )
+
+            btnSendCode.backgroundTintList = ColorStateList.valueOf(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.new_black
+                )
+            )
+        }
+    }
+
+    private fun disableButton() {
+        binding.apply {
+            btnSendCode.isEnabled = false
+
+            btnSendCode.setTextColor(ContextCompat.getColor(
+                requireContext(),
+                R.color.gray)
+            )
+
+            btnSendCode.backgroundTintList = ColorStateList.valueOf(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.silver
+                )
+            )
+        }
+    }
+
+    private fun sendCode() {
         val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(getPhoneNumber())
+            .setPhoneNumber(phoneNumber)
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(requireActivity())
             .setCallbacks(callbacks)
@@ -70,38 +131,29 @@ class AuthFirstStepFragment : Fragment() {
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
-    private fun getPhoneNumber(): String {
-        val prefix = binding.phoneNumberContainer.prefixText.toString()
-        val editText = binding.etPhoneNumber.text.toString().trim()
-
-        return "$prefix$editText"
-    }
-
     private fun setCallbacks() {
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                // If user is already verified.
-                Log.d("MyTag", "already verified")
+                // User is already verified
             }
 
-            override fun onVerificationFailed(e: FirebaseException) {
-                // When the verification is failed
-                Log.d("MyTag", "problem!")
+            override fun onVerificationFailed(exception: FirebaseException) {
+                // Failed
+                throw exception
             }
 
             override fun onCodeSent(
                 verificationId: String,
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
-                // When the OTP code is successfully sent
-                Log.d("MyTag", "success!")
-                binding.progressBar.visibility = View.GONE
+                // OTP code is successfully sent
+                binding.progressLayout.visibility = View.GONE
 
                 val action = AuthFirstStepFragmentDirections.
                 actionAuthFirstStepFragmentToAuthSecondStepFragment(
                     verificationId = verificationId,
-                    phoneNumber = getPhoneNumber()
+                    phoneNumber = phoneNumber
                 )
                 findNavController().navigate(action)
             }

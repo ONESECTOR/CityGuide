@@ -39,12 +39,10 @@
 
     // Auth
     <string name="phone_number">Номер телефона</string>
-    <string name="we_send_you">Мы отправим вам на него код подтверждения</string>
+    <string name="we_send_you">Мы отправили вам смс с кодом. Введите его в поле ниже:</string>
     <string name="enter_phone_number">Введите номер телефона</string>
     <string name="enter_code">Введите код подтверждения</string>
     <string name="resend_code">Не пришёл код? Отправить снова</string>
-    <string name="third_auth_title">Введите ваше имя</string>
-    <string name="third_auth_subtitle">Так нам будет проще к вам обращаться :)</string>
-    <string name="name">Имя</string>
-    <string name="name_error">Поле не может быть пустым!</string>
+    <string name="send_code">Отправить код</string>
+    <string name="confirm_phone">Подтвердите номер</string>
 </resources>

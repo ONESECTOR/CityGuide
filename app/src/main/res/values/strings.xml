@@ -39,12 +39,10 @@
 
     // Auth
     <string name="phone_number">Phone number</string>
-    <string name="we_send_you">We will send you a verification code</string>
+    <string name="we_send_you">We have sent you an SMS with a code. Enter it in the field below:</string>
     <string name="enter_phone_number">Enter phone number</string>
     <string name="enter_code">Enter confirmation code</string>
     <string name="resend_code">Didn\'t receive a code? Resend</string>
-    <string name="third_auth_title">Enter your name</string>
-    <string name="third_auth_subtitle">This will make it easier for us to contact you :)</string>
-    <string name="name">Name</string>
-    <string name="name_error">Field can\'t be empty!</string>
+    <string name="send_code">Send code</string>
+    <string name="confirm_phone">Confirm phone</string>
 </resources>

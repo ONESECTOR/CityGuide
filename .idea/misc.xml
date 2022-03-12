@@ -41,6 +41,7 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_profile_light.xml" value="0.149" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_search.xml" value="0.149" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_outline_settings_light.xml" value="0.1505" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_password.xml" value="0.1485" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_person.xml" value="0.25462962962962965" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_phone.xml" value="0.1725752508361204" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/drawable/ic_splash.xml" value="0.1485" />
@@ -56,8 +57,8 @@
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/found_item.xml" value="0.264" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_account_created.xml" value="0.176" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_auth_completed.xml" value="0.16385135135135134" />
-        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_auth_first_step.xml" value="0.4" />
-        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_auth_second_step.xml" value="0.16385135135135134" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_auth_first_step.xml" value="0.264" />
+        <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_auth_second_step.xml" value="0.264" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_auth_third_step.xml" value="0.16385135135135134" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_confirm_phone.xml" value="0.176" />
         <entry key="..\:/Users/nqwis/AndroidStudioProjects/CityGuide/app/src/main/res/layout/fragment_detail.xml" value="0.4" />
