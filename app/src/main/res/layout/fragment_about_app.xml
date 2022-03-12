@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/new_white"
     android:padding="20dp"
     tools:context=".fragments.about.AboutAppFragment">
 
@@ -15,5 +16,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_logo_app"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/ic_app_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        app:riv_corner_radius="16dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_version_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/golos_semi_bold"
+        android:text="Версия 1.0.0 (альфа)"
+        android:textAlignment="center"
+        android:textColor="@color/new_black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_app" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
