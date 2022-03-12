@@ -2,58 +2,117 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_fragment_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:id="@+id/profile_fragment_layout"
-    android:fillViewport="true"
     android:background="@color/new_white"
+    android:fillViewport="true"
+    android:padding="20dp"
     tools:context=".fragments.profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
-        android:paddingBottom="52dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="56dp">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/warning_layout"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:gravity="center"
-            android:orientation="vertical"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/golos_bold"
+            android:text="@string/profile"
+            android:textAlignment="center"
+            android:textColor="@color/new_black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/golos_semi_bold"
+            android:textAlignment="center"
+            android:textColor="@color/new_black"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:overScrollMode="never"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/tv_phone_number"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_profile" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_no_account"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:background="@drawable/ic_no_account" />
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_profile" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_additionally"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/golos_bold"
+            android:text="@string/additionally"
+            android:textAlignment="center"
+            android:textColor="@color/new_black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btn_about_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_additionally">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_no_account_title"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/golos_medium"
-                android:text="@string/warning_account_title"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="22sp" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_no_account_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="20dp"
                 android:fontFamily="@font/golos_regular"
-                android:text="@string/warning_account_subtitle"
-                android:textAlignment="center"
-                android:textSize="18sp" />
+                android:text="@string/about_app"
+                android:textSize="21sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_next"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_next"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_next"
+                android:tint="@color/new_black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button"

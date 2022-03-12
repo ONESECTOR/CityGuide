@@ -14,13 +14,12 @@ import com.sector.cityguide.models.Place
 class SearchAdapter: ListAdapter<Place, SearchAdapter.ViewHolder>(ItemComparator()) {
     class ViewHolder(private val binding: FoundItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(place: Place) = with(binding) {
-            tvTitle.text = "${place.name}, ${place.location}"
-            tvDescription.text = place.description
+            tvTitle.text = place.name
 
             Glide.with(itemView.context)
                 .load(place.image)
                 .centerCrop()
-                .into(ivPlace)
+                .into(imageView)
         }
 
         companion object {

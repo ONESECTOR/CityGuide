@@ -20,7 +20,7 @@
     <string name="hello">Hello</string>
     <string name="place_search">Place search</string>
 
-    // Favorite
+    // Favorite page
     <string name="your_favorites">Your favorites</string>
     <string name="empty_favorites">There is nothing in your favorites</string>
     <string name="sign_in_to_add_favorites">Sign in to add to favorites</string>
@@ -36,8 +36,15 @@
     // Profile page
     <string name="warning_account_title">You are not logged in</string>
     <string name="warning_account_subtitle">Sign in to get more features!</string>
+    <string name="about_app">About app</string>
+    <string name="additionally">Additionally</string>
 
-    // Auth
+    // Edit name page
+    <string name="enter_name">Enter name</string>
+    <string name="enter_name_hint">What is your name?</string>
+    <string name="save">Save</string>
+
+    // Auth pages
     <string name="phone_number">Phone number</string>
     <string name="we_send_you">We have sent you an SMS with a code. Enter it in the field below:</string>
     <string name="enter_phone_number">Enter phone number</string>

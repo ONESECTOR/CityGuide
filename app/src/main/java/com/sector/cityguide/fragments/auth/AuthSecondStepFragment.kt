@@ -201,10 +201,12 @@ class AuthSecondStepFragment : Fragment() {
         val hashMap: HashMap<String, Any?> = HashMap()
         hashMap["uid"] = auth.uid
         hashMap["phone"] = getPhoneNumber()
+        hashMap["name"] = ""
 
         val ref = FirebaseDatabase.getInstance()
             .getReference("Users")
             .child(auth.uid!!)
+            .child("Info")
             .setValue(hashMap)
             .addOnSuccessListener {
                 Toast.makeText(requireContext(), "Saved!", Toast.LENGTH_SHORT).show()
@@ -222,7 +224,9 @@ class AuthSecondStepFragment : Fragment() {
     }
 
     private fun checkUserExist() {
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(auth.uid!!)
+        reference = FirebaseDatabase.getInstance()
+            .getReference("Users")
+            .child(auth.uid!!)
 
         listener = object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

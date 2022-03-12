@@ -20,7 +20,7 @@
     <string name="hello">Здравствуйте</string>
     <string name="place_search">Поиск мест</string>
 
-    // Favorite
+    // Favorite page
     <string name="your_favorites">Ваше избранное</string>
     <string name="empty_favorites">В вашем избранном ничего нет</string>
     <string name="sign_in_to_add_favorites">Войдите в аккаунт, чтобы добавлять в избранное</string>
@@ -36,8 +36,15 @@
     // Profile page
     <string name="warning_account_title">Вы не вошли в аккаунт</string>
     <string name="warning_account_subtitle">Войдите, чтобы получить дополнительные возможности!</string>
+    <string name="about_app">О приложении</string>
+    <string name="additionally">Дополнительно</string>
 
-    // Auth
+    // Edit name page
+    <string name="enter_name">Введите имя</string>
+    <string name="enter_name_hint">Как вас зовут?</string>
+    <string name="save">Сохранить</string>
+
+    // Auth pages
     <string name="phone_number">Номер телефона</string>
     <string name="we_send_you">Мы отправили вам смс с кодом. Введите его в поле ниже:</string>
     <string name="enter_phone_number">Введите номер телефона</string>
