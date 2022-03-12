@@ -61,23 +61,19 @@ class HomeFragment : Fragment() {
 
         viewModel.greetingMessage().observe(viewLifecycleOwner) { greeting ->
             greetingMessage = resources.getText(greeting).toString()
+
+            if (auth.currentUser == null) {
+                binding.tvGreeting.text = greetingMessage
+            }
         }
 
         if (auth.currentUser != null) {
             checkFavorites()
             checkName()
-        } else {
-            binding.tvGreeting.text = greetingMessage
         }
 
         binding.btnSearch.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
-        }
-
-        binding.civProfile.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_homeFragment_to_profileFragment
-            )
         }
     }
 

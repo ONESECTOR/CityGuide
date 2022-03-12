@@ -1,21 +1,16 @@
 package com.sector.cityguide.fragments.profile
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.sector.cityguide.R
 import com.sector.cityguide.databinding.FragmentProfileBinding
-import com.sector.cityguide.fragments.profile.adapters.ProfileAdapter
-import com.sector.cityguide.models.Place
-import com.sector.cityguide.models.Profile
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -96,6 +91,7 @@ class ProfileFragment : Fragment() {
         binding.apply {
             divider.visibility = View.GONE
             tvPhoneNumber.visibility = View.GONE
+            btnChangeName.visibility = View.GONE
             tvAdditionally.visibility = View.GONE
         }
     }
