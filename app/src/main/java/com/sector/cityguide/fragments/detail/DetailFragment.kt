@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -51,7 +52,8 @@ class DetailFragment : Fragment() {
 
         binding.btnAddToFavorite.setOnClickListener {
             if (auth.currentUser == null) {
-                Toast.makeText(requireContext(), "Вы не вошли в аккаунт!", Toast.LENGTH_SHORT).show()
+                val message = resources.getString(R.string.sign_in_to_add_favorites)
+                Snackbar.make(binding.btnAddToFavorite, message, Snackbar.LENGTH_SHORT).show()
             } else {
                 if (isInFavorite) {
                     removeFromFavorite()
@@ -89,10 +91,12 @@ class DetailFragment : Fragment() {
             .child(getPlaceId())
             .setValue(hashMap)
             .addOnSuccessListener {
-                Toast.makeText(requireContext(), "Успешно добавлено в избранное!", Toast.LENGTH_SHORT).show()
+                val message = resources.getString(R.string.message_add_to_favorite)
+                Snackbar.make(binding.btnAddToFavorite, message, Snackbar.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
-                Toast.makeText(requireContext(), "Ошибка!", Toast.LENGTH_SHORT).show()
+                val message = resources.getString(R.string.error)
+                Snackbar.make(binding.btnAddToFavorite, message, Snackbar.LENGTH_SHORT).show()
             }
     }
 
@@ -129,10 +133,12 @@ class DetailFragment : Fragment() {
             .child(getPlaceId())
             .removeValue()
             .addOnSuccessListener {
-                Toast.makeText(requireContext(), "Успешно удалено!", Toast.LENGTH_SHORT).show()
+                val message = resources.getString(R.string.message_remove_from_favorite)
+                Snackbar.make(binding.btnAddToFavorite, message, Snackbar.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
-                Toast.makeText(requireContext(), "Ошибка при удалении!", Toast.LENGTH_SHORT).show()
+                val message = resources.getString(R.string.error)
+                Snackbar.make(binding.btnAddToFavorite, message, Snackbar.LENGTH_SHORT).show()
             }
     }
 
@@ -149,7 +155,7 @@ class DetailFragment : Fragment() {
     private fun loadPlaceDetails() {
         val ref = FirebaseDatabase.getInstance().getReference("Places")
         ref.child(getPlaceId())
-            .addListenerForSingleValueEvent(object: ValueEventListener {
+            .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val title = snapshot.child("name").value.toString()
                     val location = snapshot.child("location").value.toString()
@@ -176,9 +182,6 @@ class DetailFragment : Fragment() {
                 .load(image)
                 .centerCrop()
                 .into(ivPlace)
-
-            //shimmer.stopShimmer()
-            //shimmer.visibility = View.GONE
         }
     }
 }

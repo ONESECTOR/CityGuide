@@ -9,6 +9,8 @@
     <string name="favorite">Favorite</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
+    <string name="error">Error!</string>
+    <string name="sign_in_to_add_favorites">Sign in to add to favorites</string>
 
     // Home page
     <string name="popular">Popular</string>
@@ -23,7 +25,6 @@
     // Favorite page
     <string name="your_favorites">Your favorites</string>
     <string name="empty_favorites">There is nothing in your favorites</string>
-    <string name="sign_in_to_add_favorites">Sign in to add to favorites</string>
 
     // Search page
     <string name="search">Search</string>
@@ -32,6 +33,8 @@
 
     // Detail page
     <string name="detail">Detail</string>
+    <string name="message_add_to_favorite">Successfully added to favorites!</string>
+    <string name="message_remove_from_favorite">Successfully removed!</string>
 
     // Profile page
     <string name="warning_account_title">You are not logged in</string>

@@ -9,6 +9,8 @@
     <string name="favorite">Избранное</string>
     <string name="home">Главная</string>
     <string name="profile">Профиль</string>
+    <string name="error">Ошибка!</string>
+    <string name="sign_in_to_add_favorites">Авторизуйтесь, чтобы добавлять в избранное</string>
 
     // Home page
     <string name="popular">Популярное</string>
@@ -23,7 +25,6 @@
     // Favorite page
     <string name="your_favorites">Ваше избранное</string>
     <string name="empty_favorites">В вашем избранном ничего нет</string>
-    <string name="sign_in_to_add_favorites">Войдите в аккаунт, чтобы добавлять в избранное</string>
 
     // Search page
     <string name="search">Поиск</string>
@@ -32,6 +33,8 @@
 
     // Detail page
     <string name="detail">Подробнее</string>
+    <string name="message_add_to_favorite">Успешно добавлено в избранное!</string>
+    <string name="message_remove_from_favorite">Успешно удалено!</string>
 
     // Profile page
     <string name="warning_account_title">Вы не вошли в аккаунт</string>
