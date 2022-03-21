@@ -1,6 +1,5 @@
 package com.sector.cityguide.fragments.home
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -32,14 +31,12 @@ class HomeFragment : Fragment() {
     private lateinit var nameListener: ValueEventListener
     private lateinit var placeListener: ValueEventListener
     private lateinit var popularListener: ValueEventListener
-    private lateinit var favoriteListener: ValueEventListener
 
     private lateinit var greetingMessage: String
 
     private var nameReference: DatabaseReference? = null
     private var popularReference: DatabaseReference? = null
     private var placeReference: DatabaseReference? = null
-    private var favoriteReference: DatabaseReference? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,7 +68,6 @@ class HomeFragment : Fragment() {
         }
 
         if (auth.currentUser != null) {
-            checkFavorites()
             checkName()
         }
 
@@ -94,7 +90,6 @@ class HomeFragment : Fragment() {
         nameReference?.removeEventListener(nameListener)
         placeReference?.removeEventListener(placeListener)
         popularReference?.removeEventListener(popularListener)
-        favoriteReference?.removeEventListener(favoriteListener)
     }
 
     override fun onDestroyView() {
@@ -131,10 +126,6 @@ class HomeFragment : Fragment() {
         }
 
         nameReference?.addValueEventListener(nameListener)
-    }
-
-    private fun getProfileUid(): String {
-        return auth.uid!!
     }
 
     private fun setupPlacesAdapter() {
@@ -217,34 +208,5 @@ class HomeFragment : Fragment() {
         }
 
         popularReference?.addValueEventListener(popularListener)
-    }
-
-    private fun checkFavorites() {
-        favoriteReference = FirebaseDatabase.getInstance()
-            .getReference("Users")
-            .child(getProfileUid())
-            .child("Favorites")
-
-        favoriteListener = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val prefs = requireActivity().getSharedPreferences("favorites", Context.MODE_PRIVATE)
-                    val editor = prefs.edit()
-                    editor.putBoolean("exist", true)
-                    editor.apply()
-                } else {
-                    val prefs = requireActivity().getSharedPreferences("favorites", Context.MODE_PRIVATE)
-                    val editor = prefs.edit()
-                    editor.putBoolean("exist", false)
-                    editor.apply()
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                throw error.toException()
-            }
-        }
-
-        favoriteReference?.addValueEventListener(favoriteListener)
     }
 }

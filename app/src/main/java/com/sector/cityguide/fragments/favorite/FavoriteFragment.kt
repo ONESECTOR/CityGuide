@@ -1,9 +1,6 @@
 package com.sector.cityguide.fragments.favorite
 
-import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,10 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.sector.cityguide.databinding.FragmentFavoriteBinding
 import com.sector.cityguide.fragments.favorite.adapter.FavoriteAdapter
 import com.sector.cityguide.models.Place
@@ -25,8 +19,10 @@ class FavoriteFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var favoriteAdapter: FavoriteAdapter
-    private lateinit var visibility: String
     private lateinit var auth: FirebaseAuth
+
+    private var favoriteReference: DatabaseReference? = null
+    private lateinit var favoriteListener: ValueEventListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,17 +48,7 @@ class FavoriteFragment : Fragment() {
                 shimmer.visibility = View.GONE
                 layoutYouAreNotLoggedIn.visibility = View.VISIBLE
             } else {
-                if (favoritesExist()) {
-                    setupRecyclerView()
-                    loadFavorites()
-
-                    shimmer.stopShimmer()
-                    shimmer.visibility = View.GONE
-                } else {
-                    shimmer.stopShimmer()
-                    shimmer.visibility = View.GONE
-                    layoutNoFavorite.visibility = View.VISIBLE
-                }
+                checkFavorites()
             }
         }
     }
@@ -84,6 +70,8 @@ class FavoriteFragment : Fragment() {
         binding.apply {
             shimmer.startShimmer()
         }
+
+        favoriteReference?.removeEventListener(favoriteListener)
     }
 
     private fun initFirebase() {
@@ -98,11 +86,11 @@ class FavoriteFragment : Fragment() {
         binding.rvFavorite.adapter = favoriteAdapter
     }
 
-    private fun getProfileUid() = auth.uid
+    private fun getProfileUid() = auth.uid!!
 
     private fun loadFavorites() {
         val reference = FirebaseDatabase.getInstance().getReference("Users")
-            .child(getProfileUid()!!)
+            .child(getProfileUid())
             .child("Favorites")
 
         reference.addValueEventListener(object: ValueEventListener {
@@ -125,9 +113,32 @@ class FavoriteFragment : Fragment() {
         })
     }
 
-    private fun favoritesExist(): Boolean {
-        val prefs = requireActivity().getSharedPreferences("favorites", Context.MODE_PRIVATE)
-        Log.d("favorites", prefs.getBoolean("exist", false).toString())
-        return prefs.getBoolean("exist", false)
+    private fun checkFavorites() {
+        favoriteReference = FirebaseDatabase.getInstance()
+            .getReference("Users")
+            .child(getProfileUid())
+            .child("Favorites")
+
+        favoriteListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    setupRecyclerView()
+                    loadFavorites()
+
+                    binding.shimmer.stopShimmer()
+                    binding.shimmer.visibility = View.GONE
+                } else {
+                    binding.shimmer.stopShimmer()
+                    binding.shimmer.visibility = View.GONE
+                    binding.layoutNoFavorite.visibility = View.VISIBLE
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                throw error.toException()
+            }
+        }
+
+        favoriteReference?.addValueEventListener(favoriteListener)
     }
 }
