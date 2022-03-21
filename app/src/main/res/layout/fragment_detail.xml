@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/new_white"
     tools:context=".fragments.detail.DetailFragment">
 
@@ -13,6 +13,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,18 +42,18 @@
         android:textColor="@color/new_black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@id/btn_back"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_add_to_favorite"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/btn_back"
         app:layout_constraintTop_toTopOf="@id/btn_back" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_layout"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="20dp"
-        app:cardUseCompatPadding="true"
+        android:layout_marginTop="12dp"
+        android:paddingBottom="72dp"
+        android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_add_to_favorite">
@@ -61,10 +62,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="20dp"
+                app:cardUseCompatPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -73,65 +77,171 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="420dp"
+                                android:background="@color/gray"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="ImageContrastCheck" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_place"
                         android:layout_width="match_parent"
                         android:layout_height="420dp"
-                        android:background="@color/gray"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ImageContrastCheck" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/golos_semi_bold"
+                        android:textColor="@color/new_white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toTopOf="@id/iv_location"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_location"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/ic_outline_location"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="ImageContrastCheck" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/golos_semi_bold"
+                        android:textColor="@color/new_white"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_location"
+                        app:layout_constraintStart_toEndOf="@+id/iv_location"
+                        app:layout_constraintTop_toTopOf="@+id/iv_location" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </com.facebook.shimmer.ShimmerFrameLayout>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_place"
-                android:layout_width="match_parent"
-                android:layout_height="420dp"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title_general"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/golos_bold"
+                android:text="@string/title_general_information"
+                android:textColor="@color/new_black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_layout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_general"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/golos_regular"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="@color/new_black"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ImageContrastCheck" />
+                app:layout_constraintTop_toBottomOf="@id/tv_title_general" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_title"
+                android:id="@+id/tv_title_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="4dp"
-                android:fontFamily="@font/golos_semi_bold"
-                android:textColor="@color/new_white"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/golos_bold"
+                android:text="@string/title_history_information"
+                android:textColor="@color/new_black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@id/iv_location"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_location"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/ic_outline_location"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="ImageContrastCheck" />
+                app:layout_constraintTop_toBottomOf="@id/tv_general" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_location"
+                android:id="@+id/tv_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/golos_semi_bold"
-                android:textColor="@color/new_white"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/golos_regular"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="@color/new_black"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_location"
-                app:layout_constraintStart_toEndOf="@+id/iv_location"
-                app:layout_constraintTop_toTopOf="@+id/iv_location" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_history" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title_you_can_see"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/golos_bold"
+                android:text="@string/title_you_can_see"
+                android:textColor="@color/new_black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_history" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_you_can_see"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/golos_regular"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="@color/new_black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_you_can_see" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,9 @@
     <string name="detail">Подробнее</string>
     <string name="message_add_to_favorite">Успешно добавлено в избранное!</string>
     <string name="message_remove_from_favorite">Успешно удалено!</string>
+    <string name="title_general_information">Общая информация</string>
+    <string name="title_history_information">Немного истории</string>
+    <string name="title_you_can_see">Что можно посмотреть</string>
 
     // Profile page
     <string name="warning_account_title">Вы не вошли в аккаунт</string>

@@ -35,6 +35,9 @@
     <string name="detail">Detail</string>
     <string name="message_add_to_favorite">Successfully added to favorites!</string>
     <string name="message_remove_from_favorite">Successfully removed!</string>
+    <string name="title_general_information">General information</string>
+    <string name="title_history_information">A bit of history</string>
+    <string name="title_you_can_see">What you can see</string>
 
     // Profile page
     <string name="warning_account_title">You are not logged in</string>

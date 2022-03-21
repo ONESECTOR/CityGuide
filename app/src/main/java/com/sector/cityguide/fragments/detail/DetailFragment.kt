@@ -80,9 +80,7 @@ class DetailFragment : Fragment() {
         with(args) {
             hashMap["id"] = getPlaceId()
             hashMap["name"] = currentPlace.name
-            hashMap["location"] = currentPlace.description
             hashMap["image"] = currentPlace.image
-            hashMap["description"] = currentPlace.description
         }
 
         val ref = FirebaseDatabase.getInstance().getReference("Users")
@@ -160,11 +158,17 @@ class DetailFragment : Fragment() {
                     val title = snapshot.child("name").value.toString()
                     val location = snapshot.child("location").value.toString()
                     val image = snapshot.child("image").value.toString()
+                    val general = snapshot.child("general").value.toString()
+                    val history = snapshot.child("history").value.toString()
+                    val youCanSee = snapshot.child("youCanSee").value.toString()
 
                     setLayout(
                         title = title,
                         location = location,
-                        image = image
+                        image = image,
+                        general = general,
+                        history = history,
+                        youCanSee = youCanSee
                     )
                 }
 
@@ -174,7 +178,14 @@ class DetailFragment : Fragment() {
             })
     }
 
-    private fun setLayout(title: String, location: String, image: String) {
+    private fun setLayout(
+        title: String,
+        location: String,
+        image: String,
+        general: String,
+        history: String,
+        youCanSee: String
+    ) {
         binding.apply {
             tvTitle.text = title
             tvLocation.text = location
@@ -182,6 +193,10 @@ class DetailFragment : Fragment() {
                 .load(image)
                 .centerCrop()
                 .into(ivPlace)
+
+            tvGeneral.text = general
+            tvHistory.text = history
+            tvYouCanSee.text = youCanSee
         }
     }
 }
