@@ -2,7 +2,6 @@ package com.sector.cityguide.fragments.search
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,9 +44,6 @@ class SearchFragment : Fragment() {
 
         getPlaces()
 
-        Log.d("Test", "Всего мест: ${placesList.size}")
-        Log.d("Test", "Отфильтрованных: ${filteredList.size}")
-
         binding.btnBack.setOnClickListener {
             activity?.onBackPressed()
         }
@@ -63,8 +59,6 @@ class SearchFragment : Fragment() {
                     setupRecyclerView()
                     filter(newText!!)
                 } else {
-                    Log.d("Test", "Ищите среди сотен интересных мест!")
-                    Log.d("Test", "Список отфильтрованных мест очищен")
                     filteredList.clear()
                     binding.layoutStartSearching.visibility = View.VISIBLE
                     binding.layoutNoPlaces.visibility = View.GONE
@@ -117,8 +111,6 @@ class SearchFragment : Fragment() {
     }
 
     private fun filter(query: String) {
-        Log.d("Test", query)
-        Log.d("Test", "filter()")
         val filteredListTemp = ArrayList<Place>()
 
         for (item in placesList) {
@@ -136,11 +128,7 @@ class SearchFragment : Fragment() {
         binding.layoutNoPlaces.visibility = View.INVISIBLE
 
         if (filteredList.isEmpty()) {
-            Log.d("Test", "Ничего не найдено")
             binding.layoutNoPlaces.visibility = View.VISIBLE
         }
-
-        Log.d("Test", "Всего мест: ${placesList.size}")
-        Log.d("Test", "Отфильтрованных: ${filteredList.size}")
     }
 }

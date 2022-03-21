@@ -1,6 +1,5 @@
 package com.sector.cityguide.fragments.home.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -15,7 +14,6 @@ import com.sector.cityguide.models.Place
 class PopularAdapter: ListAdapter<Place, PopularAdapter.ViewHolder>(ItemComparator()) {
 
     class ViewHolder(private val binding: ItemPopularBinding): RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("SetTextI18n")
         fun bind(place: Place) = with(binding) {
             tvTitle.text = place.name
 

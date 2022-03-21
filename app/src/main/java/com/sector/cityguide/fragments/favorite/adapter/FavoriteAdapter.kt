@@ -10,12 +10,8 @@ import com.bumptech.glide.Glide
 import com.sector.cityguide.databinding.FavoriteItemBinding
 import com.sector.cityguide.fragments.favorite.FavoriteFragmentDirections
 import com.sector.cityguide.models.Place
-import kotlin.properties.Delegates
 
 class FavoriteAdapter: ListAdapter<Place, FavoriteAdapter.ViewHolder>(ItemComparator()) {
-
-    private var size by Delegates.notNull<Int>()
-
     class ViewHolder(private val binding: FavoriteItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(place: Place) = with(binding) {
             tvPlace.text = place.name
@@ -49,10 +45,6 @@ class FavoriteAdapter: ListAdapter<Place, FavoriteAdapter.ViewHolder>(ItemCompar
                 )
             }
         }
-    }
-
-    override fun getItemCount(): Int {
-        return super.getItemCount()
     }
 
     class ItemComparator: DiffUtil.ItemCallback<Place>() {
