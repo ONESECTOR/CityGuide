@@ -20,7 +20,6 @@ class HomeViewModel: ViewModel() {
     private fun getGreetingMessage() {
         val c = Calendar.getInstance()
         val timeOfDay = c.get(Calendar.HOUR_OF_DAY)
-        Log.d("Time", timeOfDay.toString())
 
         _greeting.value = when(timeOfDay) {
             in 6..11 -> R.string.good_morning
