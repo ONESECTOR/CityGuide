@@ -58,19 +58,8 @@ class FavoriteFragment : Fragment() {
         _binding = null
     }
 
-    override fun onResume() {
-        super.onResume()
-        binding.apply {
-            shimmer.startShimmer()
-        }
-    }
-
     override fun onPause() {
         super.onPause()
-        binding.apply {
-            shimmer.startShimmer()
-        }
-
         favoriteReference?.removeEventListener(favoriteListener)
     }
 

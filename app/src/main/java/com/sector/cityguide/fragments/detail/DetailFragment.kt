@@ -64,16 +64,6 @@ class DetailFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        binding.shimmer.startShimmer()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        binding.shimmer.stopShimmer()
-    }
-
     private fun addToFavorite() {
         val hashMap = HashMap<String, Any>()
 

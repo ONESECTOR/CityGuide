@@ -54,7 +54,7 @@ class SearchFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                if(!TextUtils.isEmpty(newText)) {
+                if (!TextUtils.isEmpty(newText)) {
                     binding.layoutStartSearching.visibility = View.GONE
                     setupRecyclerView()
                     filter(newText!!)
