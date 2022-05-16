@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.sector.cityguide.databinding.FragmentFavoriteBinding
@@ -64,7 +63,6 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun initFirebase() {
-        FirebaseApp.initializeApp(requireContext())
         auth = FirebaseAuth.getInstance()
     }
 
@@ -85,7 +83,7 @@ class FavoriteFragment : Fragment() {
         reference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    val favoritePlaces = ArrayList<Place>()
+                    val favoritePlaces = mutableListOf<Place>()
 
                     for (ds in snapshot.children) {
                         val place = ds.getValue(Place::class.java)

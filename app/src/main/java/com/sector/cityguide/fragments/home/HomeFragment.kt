@@ -9,21 +9,17 @@ import androidx.lifecycle.ViewModelProvider
 import com.sector.cityguide.R
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.sector.cityguide.databinding.FragmentHomeBinding
 import com.sector.cityguide.fragments.home.adapters.PlaceAdapter
 import com.sector.cityguide.fragments.home.adapters.PopularAdapter
 import com.sector.cityguide.fragments.home.viewmodel.HomeViewModel
+import com.sector.cityguide.main.MyApplication
 import com.sector.cityguide.models.Place
-import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var auth: FirebaseAuth
 
     private lateinit var placeAdapter: PlaceAdapter
     private lateinit var popularAdapter: PopularAdapter
@@ -44,7 +40,6 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        initFirebase()
         setupPlacesAdapter()
         setupPopularAdapter()
 
@@ -62,13 +57,11 @@ class HomeFragment : Fragment() {
         viewModel.greetingMessage().observe(viewLifecycleOwner) { greeting ->
             greetingMessage = resources.getText(greeting).toString()
 
-            if (auth.currentUser == null) {
+            if (MyApplication(requireContext()).isLogged() != null) {
+                checkName()
+            } else {
                 binding.tvGreeting.text = greetingMessage
             }
-        }
-
-        if (auth.currentUser != null) {
-            checkName()
         }
 
         binding.btnSearch.setOnClickListener {
@@ -88,15 +81,13 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun initFirebase() {
-        FirebaseApp.initializeApp(requireContext())
-        auth = FirebaseAuth.getInstance()
-    }
-
     private fun checkName() {
         nameReference = FirebaseDatabase.getInstance()
             .getReference("Users")
-            .child(auth.uid!!)
+            .child(MyApplication(
+                    requireContext()
+                ).getUid()
+            )
             .child(0.toString())
             .child("name")
 
@@ -104,10 +95,10 @@ class HomeFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val name = snapshot.value.toString()
 
-                if (name.isEmpty()) {
-                    binding.tvGreeting.text = greetingMessage
+                binding.tvGreeting.text = if (name.isEmpty()) {
+                    greetingMessage
                 } else {
-                    binding.tvGreeting.text = "$greetingMessage, $name"
+                    "$greetingMessage, $name"
                 }
             }
 
@@ -149,7 +140,7 @@ class HomeFragment : Fragment() {
         placeListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    val list = ArrayList<Place>()
+                    val list = mutableListOf<Place>()
 
                     for (placeSnapshot in snapshot.children) {
                         val place = placeSnapshot.getValue(Place::class.java)
@@ -178,7 +169,7 @@ class HomeFragment : Fragment() {
         popularListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    val list = ArrayList<Place>()
+                    val list = mutableListOf<Place>()
 
                     for (placeSnapshot in snapshot.children) {
                         val place = placeSnapshot.getValue(Place::class.java)

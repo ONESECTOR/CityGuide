@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     // Common
+    <string name="app_version">1.0.0</string>
     <string name="email">Электронная почта</string>
     <string name="password">Пароль</string>
     <string name="skip">Пропустить</string>
@@ -10,7 +11,7 @@
     <string name="home">Главная</string>
     <string name="profile">Профиль</string>
     <string name="error">Ошибка!</string>
-    <string name="sign_in_to_add_favorites">Авторизуйтесь, чтобы добавлять в избранное</string>
+    <string name="sign_in_to_add_favorites">Войдите, чтобы добавлять в избранное</string>
 
     // Home page
     <string name="popular">Популярное</string>

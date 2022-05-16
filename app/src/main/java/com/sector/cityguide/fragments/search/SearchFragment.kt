@@ -16,7 +16,6 @@ import com.google.firebase.database.ValueEventListener
 import com.sector.cityguide.databinding.FragmentSearchBinding
 import com.sector.cityguide.fragments.search.adapter.SearchAdapter
 import com.sector.cityguide.models.Place
-import kotlin.collections.ArrayList
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
@@ -24,8 +23,8 @@ class SearchFragment : Fragment() {
 
     private lateinit var searchAdapter: SearchAdapter
 
-    private val placesList = ArrayList<Place>()
-    private var filteredList = ArrayList<Place>()
+    private val placesList = mutableListOf<Place>()
+    private var filteredList = mutableListOf<Place>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -111,7 +110,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun filter(query: String) {
-        val filteredListTemp = ArrayList<Place>()
+        val filteredListTemp = mutableListOf<Place>()
 
         for (item in placesList) {
             val filteredName = item.name.lowercase()

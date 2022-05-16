@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sector.cityguide.databinding.ActivityMainBinding
+import com.sector.cityguide.main.MyApplication
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -19,6 +20,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setBottomNavigationView()
+        initFirebase()
+    }
+
+    private fun setBottomNavigationView() {
         val bottomNavigationView = findViewById<BottomNavigationView>(
             R.id.bottom_navigation_view
         )
@@ -39,5 +45,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         bottomNavigationView.setupWithNavController(navController)
+    }
+
+    private fun initFirebase() {
+        MyApplication(this).initFirebase()
     }
 }

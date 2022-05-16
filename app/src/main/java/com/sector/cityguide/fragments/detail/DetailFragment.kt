@@ -78,14 +78,6 @@ class DetailFragment : Fragment() {
             .child("Favorites")
             .child(getPlaceId())
             .setValue(hashMap)
-            .addOnSuccessListener {
-                val message = resources.getString(R.string.message_add_to_favorite)
-                Snackbar.make(binding.btnAddToFavorite, message, Snackbar.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener {
-                val message = resources.getString(R.string.error)
-                Snackbar.make(binding.btnAddToFavorite, message, Snackbar.LENGTH_SHORT).show()
-            }
     }
 
     private fun checkIsInFavorite() {

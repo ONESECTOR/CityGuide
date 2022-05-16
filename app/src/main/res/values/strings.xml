@@ -1,6 +1,7 @@
 <resources>
     // Common
     <string name="app_name" translatable="false">City Guide</string>
+    <string name="app_version">1.0.0 release</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="skip">Skip</string>
